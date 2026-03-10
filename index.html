@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>photography.zip</title>
-
 <link rel="icon" href="https://res.cloudinary.com/dbuxi5yul/image/upload/v1773080620/ss2_xa7deu.png" type="image/png">
 <meta property="og:title" content="photography.zip">
 <meta property="og:description" content="photography portfolio">
@@ -14,7 +13,6 @@
 <meta name="twitter:title" content="photography.zip">
 <meta name="twitter:description" content="photography portfolio">
 <meta name="twitter:image" content="https://res.cloudinary.com/dbuxi5yul/image/upload/v1773080986/sdsdd_uddl5z.png">
-
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -28,13 +26,11 @@
     touch-action: none;
     overscroll-behavior: none;
   }
-
   body::after {
     content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 99999;
     background: repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
     mix-blend-mode: multiply;
   }
-
   .desktop-icon {
     position: absolute;
     display: flex; flex-direction: column; align-items: center;
@@ -53,7 +49,6 @@
     white-space: nowrap; font-size: 11px;
   }
   .desktop-icon.selected .icon-label { text-shadow: none; }
-
   .window {
     position: fixed; display: flex; flex-direction: column;
     background: #c0c0c0;
@@ -61,7 +56,6 @@
     border-right: 2px solid #404040; border-bottom: 2px solid #404040;
     box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
   }
-
   .title-bar {
     background: linear-gradient(90deg, #000080, #1084d0);
     padding: 3px 4px; display: flex; align-items: center; gap: 4px;
@@ -71,7 +65,6 @@
     color: white; font-weight: bold; font-size: 11px; flex: 1;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-
   .win-btn {
     background: #c0c0c0; border: none;
     border-top: 1px solid #fff; border-left: 1px solid #fff;
@@ -87,10 +80,8 @@
     border-right: 1px solid #fff; border-bottom: 1px solid #fff;
   }
   .close-btn { min-width: 28px; min-height: 24px; font-size: 14px; }
-
   .menu-bar { display: flex; padding: 1px 0; border-bottom: 1px solid #808080; flex-shrink: 0; }
   .menu-bar span { padding: 2px 8px; font-size: 11px; }
-
   .address-bar {
     display: flex; align-items: center; padding: 2px 4px; gap: 4px;
     border-bottom: 1px solid #808080; flex-shrink: 0; font-size: 11px;
@@ -101,7 +92,6 @@
     padding: 1px 4px; font-family: inherit; font-size: 11px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
-
   .window-content {
     flex: 1; overflow: auto; -webkit-overflow-scrolling: touch;
     background: white; margin: 2px;
@@ -109,9 +99,7 @@
     border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf;
     touch-action: pan-y;
   }
-
   .status-bar { padding: 2px 6px; font-size: 11px; border-top: 1px solid #808080; color: #404040; flex-shrink: 0; }
-
   .file-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, 90px);
@@ -135,7 +123,6 @@
     font-size: 11px; text-align: center; line-height: 13px;
     word-break: break-all; max-width: 84px; padding: 0 2px;
   }
-
   .viewer-area {
     flex: 1; background: #000; margin: 2px;
     border-top: 1px solid #808080; border-left: 1px solid #808080;
@@ -143,14 +130,12 @@
     display: flex; align-items: center; justify-content: center; overflow: hidden;
   }
   .viewer-area img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-
   .viewer-nav {
     display: flex; align-items: center; justify-content: center; gap: 4px;
     padding: 4px 6px; flex-shrink: 0; background: #c0c0c0;
   }
   .viewer-nav .win-btn { min-width: 36px; min-height: 28px; font-size: 14px; }
   .viewer-nav .nav-label { font-size: 11px; min-width: 60px; text-align: center; }
-
   .taskbar {
     position: fixed; bottom: 0; left: 0; right: 0; height: 40px;
     background: #c0c0c0; border-top: 2px solid #dfdfdf;
@@ -177,7 +162,6 @@
     padding: 2px 8px; height: 32px;
     display: flex; align-items: center; gap: 6px; font-size: 11px;
   }
-
   .start-menu {
     position: fixed; bottom: 40px; left: 0; width: 280px;
     background: #c0c0c0;
@@ -203,9 +187,7 @@
   }
   .start-menu .menu-item:hover, .start-menu .menu-item:active { background: #000080; color: white; }
   .start-menu .menu-sep { border-top: 1px solid #808080; border-bottom: 1px solid #dfdfdf; margin: 2px 4px; }
-
   .drag-handle { display: none; }
-
   @media (max-width: 768px) {
     .desktop-icon .icon-wrap svg { width: 44px; height: 44px; }
     .desktop-icon .icon-label { font-size: 12px; }
@@ -228,8 +210,6 @@
 </style>
 </head>
 <body>
-
-<!-- BACKGROUND VIDEO — same as main site or use a different one -->
 <video id="bgVideoDesktop" autoplay muted loop playsinline webkit-playsinline style="position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;object-fit:cover;z-index:0;pointer-events:none;">
   <source src="https://res.cloudinary.com/dbuxi5yul/video/upload/v1773124017/OUTPUT_24_copy_klrde7.mp4" type="video/mp4">
 </video>
@@ -253,26 +233,26 @@
   window.addEventListener('resize', pickBg);
 })();
 </script>
-
 <div id="desktop" style="position:relative;z-index:1;"></div>
 <div id="windows" style="position:relative;z-index:2;"></div>
-
 <div id="start-menu" class="start-menu">
   <div class="sidebar"><span>zidufilm</span></div>
   <div class="menu-items">
     <div class="menu-item" onclick="window.open(VIDEOGRAPHY_URL, '_blank');closeStart();">🎬 videography.zip</div>
     <div class="menu-item" id="docsMenuItem" onclick="toggleDocs()">📄 Documents ▸</div>
     <div id="docsSubmenu" style="display:none;">
-      <div class="menu-item" style="padding-left:24px" onclick="openCategory('friendsandfamily');closeStart();">📁 friendsandfamily.zip</div>
-      <div class="menu-item" style="padding-left:24px" onclick="openCategory('travel');closeStart();">📁 travel.zip</div>
-      <div class="menu-item" style="padding-left:24px" onclick="openCategory('outandabout');closeStart();">📁 outandabout.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openGroup('outside');closeStart();">📁 outside.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openGroup('gatherings');closeStart();">📁 gatherings.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openGroup('cali25');closeStart();">📁 cali25.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openGroup('nyc25');closeStart();">📁 nyc25.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openGroup('chicago25');closeStart();">📁 chicago25.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openGroup('soccercharitymatch');closeStart();">📁 soccercharitymatch.zip</div>
     </div>
     <div class="menu-item" onclick="window.open('https://instagram.com/zidufilm', '_blank');closeStart();">📸 Socials</div>
     <div class="menu-sep"></div>
     <div class="menu-item">🔌 Shut Down...</div>
   </div>
 </div>
-
 <div class="taskbar">
   <button class="win-btn start-btn" id="startBtn" onclick="toggleStart()">
     <svg width="16" height="16" viewBox="0 0 16 16">
@@ -287,64 +267,833 @@
   <div class="taskbar-items" id="taskbarItems"></div>
   <div class="systray">🔊 <span id="clock"></span></div>
 </div>
-
 <script>
 // =====================================================
-//  CATEGORY FOLDERS on desktop
-//  Each contains sub-folders (zips) which contain images
+//  ALL ZIPS WITH EXPLICIT IMAGE URLS
+//  To add your real images, replace each placeholder URL
+//  Each line has a comment showing which zip and image number
 // =====================================================
 
-// YOUR VIDEOGRAPHY SITE URL — where the videography.zip icon links to
 var VIDEOGRAPHY_URL = "https://your-videography-site.vercel.app";
 
-function makeZip(num) {
-  var s = num < 10 ? '00' + num : '0' + num;
-  var imgs = [];
-  for (var j = 1; j <= 20; j++) {
-    var jj = j < 10 ? '0' + j : '' + j;
-    imgs.push({ id: 'z' + s + '_' + j, name: 'img_' + jj + '.jpg', url: 'https://picsum.photos/seed/' + s + '_' + jj + '/800/1200' });
+var allZips = {
+  "z001": {
+    id: "z001", name: "001.zip", type: "zip",
+    images: [
+      { id: "z001_1", name: "img_01.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126992/2025-08-23_3705198683929862708_d7oz5v.jpg" },  // ← REPLACE URL for 001.zip image 01
+      { id: "z001_2", name: "img_02.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126991/2025-08-23_3705198683904686134_h9pddt.jpg" },  // ← REPLACE URL for 001.zip image 02
+      { id: "z001_3", name: "img_03.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126991/2025-08-23_3705198683921465629_td7unx.jpg" },  // ← REPLACE URL for 001.zip image 03
+      { id: "z001_4", name: "img_04.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126991/2025-08-23_3705198683921451106_kcsdqp.jpg" },  // ← REPLACE URL for 001.zip image 04
+      { id: "z001_5", name: "img_05.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126991/2025-08-23_3705198683913085154_cmo3ue.jpg" },  // ← REPLACE URL for 001.zip image 05
+      { id: "z001_6", name: "img_06.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126991/2025-08-23_3705198683921477945_k2kcas.jpg" },  // ← REPLACE URL for 001.zip image 06
+      { id: "z001_7", name: "img_07.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126992/2025-08-23_3705198683929856020_xvl9ag.jpg" },  // ← REPLACE URL for 001.zip image 07
+      { id: "z001_8", name: "img_08.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126992/2025-08-23_3705198683929841155_oicodh.jpg" },  // ← REPLACE URL for 001.zip image 08
+      { id: "z001_9", name: "img_09.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126992/2025-08-23_3705198683929884298_nhdycs.jpg" },  // ← REPLACE URL for 001.zip image 09
+      { id: "z001_10", name: "img_10.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126995/2025-08-23_3705198683938270405_eu6k3f.jpg" },  // ← REPLACE URL for 001.zip image 10
+      { id: "z001_11", name: "img_11.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126992/2025-08-23_3705198683921480821_adxurb.jpg" },  // ← REPLACE URL for 001.zip image 11
+      { id: "z001_12", name: "img_12.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126992/2025-08-23_3705198683929884784_bdxoer.jpg" },  // ← REPLACE URL for 001.zip image 12
+      { id: "z001_13", name: "img_13.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126995/2025-08-23_3705198683955068166_ypku6l.jpg" },  // ← REPLACE URL for 001.zip image 13
+      { id: "z001_14", name: "img_14.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773126991/2025-08-23_3705198683904688782_lextbj.jpg" },  // ← REPLACE URL for 001.zip image 14", name: "img_20.jpg", url: "https://picsum.photos/seed/001_20/800/1200" }  // ← REPLACE URL for 001.zip image 20
+    ]
+  },
+  "z002": {
+    id: "z002", name: "002.zip", type: "zip",
+    images: [
+      { id: "z002_1", name: "img_01.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127260/2025-08-23_3705214315136163978_ejbehm.jpg" },  // ← REPLACE URL for 002.zip image 01
+      { id: "z002_2", name: "img_02.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127265/2025-08-23_3705214315152977321_wz2mdn.jpg" },  // ← REPLACE URL for 002.zip image 02
+      { id: "z002_3", name: "img_03.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127260/2025-08-23_3705214315085861638_sltlso.jpg" },  // ← REPLACE URL for 002.zip image 03
+      { id: "z002_4", name: "img_04.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127259/2025-08-23_3705214315077471686_qud2ai.jpg" },  // ← REPLACE URL for 002.zip image 04
+      { id: "z002_5", name: "img_05.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127264/2025-08-23_3705214315144604223_td8exm.jpg" },  // ← REPLACE URL for 002.zip image 05
+      { id: "z002_6", name: "img_06.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127266/2025-08-23_3705214315152986719_t7ghfz.jpg" },  // ← REPLACE URL for 002.zip image 06
+      { id: "z002_7", name: "img_07.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127266/2025-08-23_3705214315152992746_fdg6az.jpg" },  // ← REPLACE URL for 002.zip image 07
+      { id: "z002_8", name: "img_08.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127260/2025-08-23_3705214315136182097_gfgfwa.jpg" },  // ← REPLACE URL for 002.zip image 08
+      { id: "z002_9", name: "img_09.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127262/2025-08-23_3705214315136203792_yyetca.jpg" },  // ← REPLACE URL for 002.zip image 09
+      { id: "z002_10", name: "img_10.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127260/2025-08-23_3705214315085833396_qxfdai.jpg" },  // ← REPLACE URL for 002.zip image 10
+      { id: "z002_11", name: "img_11.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127260/2025-08-23_3705214315136191080_dkfm0y.jpg" },  // ← REPLACE URL for 002.zip image 11
+      { id: "z002_12", name: "img_12.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127260/2025-08-23_3705214315136183689_mvm4rj.jpg" },  // ← REPLACE URL for 002.zip image 12
+      { id: "z002_13", name: "img_13.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127267/2025-08-23_3705214315178134833_q7lg2v.jpg" },  // ← REPLACE URL for 002.zip image 13
+      { id: "z002_14", name: "img_14.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127264/2025-08-23_3705214315144567893_toufni.jpg" },  // ← REPLACE URL for 002.zip image 14
+      { id: "z002_15", name: "img_15.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127266/2025-08-23_3705214315169715029_rikhxo.jpg" },  // ← REPLACE URL for 002.zip image 15
+      { id: "z002_16", name: "img_16.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127266/2025-08-23_3705214315152961805_sncpkf.jpg" },  // ← REPLACE URL for 002.zip image 16
+      { id: "z002_17", name: "img_17.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127269/2025-08-23_3705214315194935618_zgbvaj.jpg" },  // ← REPLACE URL for 002.zip image 17
+      { id: "z002_18", name: "img_18.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127267/2025-08-23_3705214315178128110_bhwwyu.jpg" },  // ← REPLACE URL for 002.zip image 18
+      { id: "z002_19", name: "img_19.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127263/2025-08-23_3705214315136204879_vg7u8t.jpg" },  // ← REPLACE URL for 002.zip image 19
+    ]
+  },
+  "z003": {
+    id: "z003", name: "003.zip", type: "zip",
+    images: [
+      { id: "z003_1", name: "img_01.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127531/2025-08-23_3705214667231236056_dg0pnd.jpg" },  // ← REPLACE URL for 003.zip image 01
+      { id: "z003_2", name: "img_02.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127536/2025-08-23_3705214667248000389_hn73qh.jpg" },  // ← REPLACE URL for 003.zip image 02
+      { id: "z003_3", name: "img_03.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127533/2025-08-23_3705214667239610058_zwkzrn.jpg" },  // ← REPLACE URL for 003.zip image 03
+      { id: "z003_4", name: "img_04.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127534/2025-08-23_3705214667239629707_zewsvt.jpg" },  // ← REPLACE URL for 003.zip image 04
+      { id: "z003_5", name: "img_05.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127534/2025-08-23_3705214667247978973_sux6vs.jpg" },  // ← REPLACE URL for 003.zip image 05
+      { id: "z003_6", name: "img_06.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127538/2025-08-23_3705214667248041934_sv4rfc.jpg" },  // ← REPLACE URL for 003.zip image 06
+      { id: "z003_7", name: "img_07.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127536/2025-08-23_3705214667248009200_l9stq1.jpg" },  // ← REPLACE URL for 003.zip image 07
+      { id: "z003_8", name: "img_08.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127530/2025-08-23_3705214667164139241_eonnio.jpg" },  // ← REPLACE URL for 003.zip image 08
+      { id: "z003_9", name: "img_09.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127531/2025-08-23_3705214667231204505_ai2mdh.jpg" },  // ← REPLACE URL for 003.zip image 09
+      { id: "z003_10", name: "img_10.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127534/2025-08-23_3705214667247976884_zderwa.jpg" },  // ← REPLACE URL for 003.zip image 10
+      { id: "z003_11", name: "img_11.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127536/2025-08-23_3705214667248006509_nizqxo.jpg" },  // ← REPLACE URL for 003.zip image 11
+      { id: "z003_12", name: "img_12.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127531/2025-08-23_3705214667239596088_qf2wiz.jpg" },  // ← REPLACE URL for 003.zip image 12
+      { id: "z003_13", name: "img_13.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127536/2025-08-23_3705214667248021898_c3b5ci.jpg" },  // ← REPLACE URL for 003.zip image 13
+      { id: "z003_14", name: "img_14.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127539/2025-08-23_3705214667256381036_tu6c9d.jpg" },  // ← REPLACE URL for 003.zip image 14
+      { id: "z003_15", name: "img_15.jpg", url: "https://res.cloudinary.com/dbuxi5yul/image/upload/v1773127531/2025-08-23_3705214667172520124_ysdymj.jpg" },  // ← REPLACE URL for 003.zip image 15
+      { id: "z003_16", name: "img_16.jpg", url: "https://picsum.photos/seed/003_16/800/1200" },  // ← REPLACE URL for 003.zip image 16
+      { id: "z003_17", name: "img_17.jpg", url: "https://picsum.photos/seed/003_17/800/1200" },  // ← REPLACE URL for 003.zip image 17
+      { id: "z003_18", name: "img_18.jpg", url: "https://picsum.photos/seed/003_18/800/1200" },  // ← REPLACE URL for 003.zip image 18
+      { id: "z003_19", name: "img_19.jpg", url: "https://picsum.photos/seed/003_19/800/1200" },  // ← REPLACE URL for 003.zip image 19
+      { id: "z003_20", name: "img_20.jpg", url: "https://picsum.photos/seed/003_20/800/1200" }  // ← REPLACE URL for 003.zip image 20
+    ]
+  },
+  "z004": {
+    id: "z004", name: "004.zip", type: "zip",
+    images: [
+      { id: "z004_1", name: "img_01.jpg", url: "https://picsum.photos/seed/004_01/800/1200" },  // ← REPLACE URL for 004.zip image 01
+      { id: "z004_2", name: "img_02.jpg", url: "https://picsum.photos/seed/004_02/800/1200" },  // ← REPLACE URL for 004.zip image 02
+      { id: "z004_3", name: "img_03.jpg", url: "https://picsum.photos/seed/004_03/800/1200" },  // ← REPLACE URL for 004.zip image 03
+      { id: "z004_4", name: "img_04.jpg", url: "https://picsum.photos/seed/004_04/800/1200" },  // ← REPLACE URL for 004.zip image 04
+      { id: "z004_5", name: "img_05.jpg", url: "https://picsum.photos/seed/004_05/800/1200" },  // ← REPLACE URL for 004.zip image 05
+      { id: "z004_6", name: "img_06.jpg", url: "https://picsum.photos/seed/004_06/800/1200" },  // ← REPLACE URL for 004.zip image 06
+      { id: "z004_7", name: "img_07.jpg", url: "https://picsum.photos/seed/004_07/800/1200" },  // ← REPLACE URL for 004.zip image 07
+      { id: "z004_8", name: "img_08.jpg", url: "https://picsum.photos/seed/004_08/800/1200" },  // ← REPLACE URL for 004.zip image 08
+      { id: "z004_9", name: "img_09.jpg", url: "https://picsum.photos/seed/004_09/800/1200" },  // ← REPLACE URL for 004.zip image 09
+      { id: "z004_10", name: "img_10.jpg", url: "https://picsum.photos/seed/004_10/800/1200" },  // ← REPLACE URL for 004.zip image 10
+      { id: "z004_11", name: "img_11.jpg", url: "https://picsum.photos/seed/004_11/800/1200" },  // ← REPLACE URL for 004.zip image 11
+      { id: "z004_12", name: "img_12.jpg", url: "https://picsum.photos/seed/004_12/800/1200" },  // ← REPLACE URL for 004.zip image 12
+      { id: "z004_13", name: "img_13.jpg", url: "https://picsum.photos/seed/004_13/800/1200" },  // ← REPLACE URL for 004.zip image 13
+      { id: "z004_14", name: "img_14.jpg", url: "https://picsum.photos/seed/004_14/800/1200" },  // ← REPLACE URL for 004.zip image 14
+      { id: "z004_15", name: "img_15.jpg", url: "https://picsum.photos/seed/004_15/800/1200" },  // ← REPLACE URL for 004.zip image 15
+      { id: "z004_16", name: "img_16.jpg", url: "https://picsum.photos/seed/004_16/800/1200" },  // ← REPLACE URL for 004.zip image 16
+      { id: "z004_17", name: "img_17.jpg", url: "https://picsum.photos/seed/004_17/800/1200" },  // ← REPLACE URL for 004.zip image 17
+      { id: "z004_18", name: "img_18.jpg", url: "https://picsum.photos/seed/004_18/800/1200" },  // ← REPLACE URL for 004.zip image 18
+      { id: "z004_19", name: "img_19.jpg", url: "https://picsum.photos/seed/004_19/800/1200" },  // ← REPLACE URL for 004.zip image 19
+      { id: "z004_20", name: "img_20.jpg", url: "https://picsum.photos/seed/004_20/800/1200" }  // ← REPLACE URL for 004.zip image 20
+    ]
+  },
+  "z005": {
+    id: "z005", name: "005.zip", type: "zip",
+    images: [
+      { id: "z005_1", name: "img_01.jpg", url: "https://picsum.photos/seed/005_01/800/1200" },  // ← REPLACE URL for 005.zip image 01
+      { id: "z005_2", name: "img_02.jpg", url: "https://picsum.photos/seed/005_02/800/1200" },  // ← REPLACE URL for 005.zip image 02
+      { id: "z005_3", name: "img_03.jpg", url: "https://picsum.photos/seed/005_03/800/1200" },  // ← REPLACE URL for 005.zip image 03
+      { id: "z005_4", name: "img_04.jpg", url: "https://picsum.photos/seed/005_04/800/1200" },  // ← REPLACE URL for 005.zip image 04
+      { id: "z005_5", name: "img_05.jpg", url: "https://picsum.photos/seed/005_05/800/1200" },  // ← REPLACE URL for 005.zip image 05
+      { id: "z005_6", name: "img_06.jpg", url: "https://picsum.photos/seed/005_06/800/1200" },  // ← REPLACE URL for 005.zip image 06
+      { id: "z005_7", name: "img_07.jpg", url: "https://picsum.photos/seed/005_07/800/1200" },  // ← REPLACE URL for 005.zip image 07
+      { id: "z005_8", name: "img_08.jpg", url: "https://picsum.photos/seed/005_08/800/1200" },  // ← REPLACE URL for 005.zip image 08
+      { id: "z005_9", name: "img_09.jpg", url: "https://picsum.photos/seed/005_09/800/1200" },  // ← REPLACE URL for 005.zip image 09
+      { id: "z005_10", name: "img_10.jpg", url: "https://picsum.photos/seed/005_10/800/1200" },  // ← REPLACE URL for 005.zip image 10
+      { id: "z005_11", name: "img_11.jpg", url: "https://picsum.photos/seed/005_11/800/1200" },  // ← REPLACE URL for 005.zip image 11
+      { id: "z005_12", name: "img_12.jpg", url: "https://picsum.photos/seed/005_12/800/1200" },  // ← REPLACE URL for 005.zip image 12
+      { id: "z005_13", name: "img_13.jpg", url: "https://picsum.photos/seed/005_13/800/1200" },  // ← REPLACE URL for 005.zip image 13
+      { id: "z005_14", name: "img_14.jpg", url: "https://picsum.photos/seed/005_14/800/1200" },  // ← REPLACE URL for 005.zip image 14
+      { id: "z005_15", name: "img_15.jpg", url: "https://picsum.photos/seed/005_15/800/1200" },  // ← REPLACE URL for 005.zip image 15
+      { id: "z005_16", name: "img_16.jpg", url: "https://picsum.photos/seed/005_16/800/1200" },  // ← REPLACE URL for 005.zip image 16
+      { id: "z005_17", name: "img_17.jpg", url: "https://picsum.photos/seed/005_17/800/1200" },  // ← REPLACE URL for 005.zip image 17
+      { id: "z005_18", name: "img_18.jpg", url: "https://picsum.photos/seed/005_18/800/1200" },  // ← REPLACE URL for 005.zip image 18
+      { id: "z005_19", name: "img_19.jpg", url: "https://picsum.photos/seed/005_19/800/1200" },  // ← REPLACE URL for 005.zip image 19
+      { id: "z005_20", name: "img_20.jpg", url: "https://picsum.photos/seed/005_20/800/1200" }  // ← REPLACE URL for 005.zip image 20
+    ]
+  },
+  "z006": {
+    id: "z006", name: "006.zip", type: "zip",
+    images: [
+      { id: "z006_1", name: "img_01.jpg", url: "https://picsum.photos/seed/006_01/800/1200" },  // ← REPLACE URL for 006.zip image 01
+      { id: "z006_2", name: "img_02.jpg", url: "https://picsum.photos/seed/006_02/800/1200" },  // ← REPLACE URL for 006.zip image 02
+      { id: "z006_3", name: "img_03.jpg", url: "https://picsum.photos/seed/006_03/800/1200" },  // ← REPLACE URL for 006.zip image 03
+      { id: "z006_4", name: "img_04.jpg", url: "https://picsum.photos/seed/006_04/800/1200" },  // ← REPLACE URL for 006.zip image 04
+      { id: "z006_5", name: "img_05.jpg", url: "https://picsum.photos/seed/006_05/800/1200" },  // ← REPLACE URL for 006.zip image 05
+      { id: "z006_6", name: "img_06.jpg", url: "https://picsum.photos/seed/006_06/800/1200" },  // ← REPLACE URL for 006.zip image 06
+      { id: "z006_7", name: "img_07.jpg", url: "https://picsum.photos/seed/006_07/800/1200" },  // ← REPLACE URL for 006.zip image 07
+      { id: "z006_8", name: "img_08.jpg", url: "https://picsum.photos/seed/006_08/800/1200" },  // ← REPLACE URL for 006.zip image 08
+      { id: "z006_9", name: "img_09.jpg", url: "https://picsum.photos/seed/006_09/800/1200" },  // ← REPLACE URL for 006.zip image 09
+      { id: "z006_10", name: "img_10.jpg", url: "https://picsum.photos/seed/006_10/800/1200" },  // ← REPLACE URL for 006.zip image 10
+      { id: "z006_11", name: "img_11.jpg", url: "https://picsum.photos/seed/006_11/800/1200" },  // ← REPLACE URL for 006.zip image 11
+      { id: "z006_12", name: "img_12.jpg", url: "https://picsum.photos/seed/006_12/800/1200" },  // ← REPLACE URL for 006.zip image 12
+      { id: "z006_13", name: "img_13.jpg", url: "https://picsum.photos/seed/006_13/800/1200" },  // ← REPLACE URL for 006.zip image 13
+      { id: "z006_14", name: "img_14.jpg", url: "https://picsum.photos/seed/006_14/800/1200" },  // ← REPLACE URL for 006.zip image 14
+      { id: "z006_15", name: "img_15.jpg", url: "https://picsum.photos/seed/006_15/800/1200" },  // ← REPLACE URL for 006.zip image 15
+      { id: "z006_16", name: "img_16.jpg", url: "https://picsum.photos/seed/006_16/800/1200" },  // ← REPLACE URL for 006.zip image 16
+      { id: "z006_17", name: "img_17.jpg", url: "https://picsum.photos/seed/006_17/800/1200" },  // ← REPLACE URL for 006.zip image 17
+      { id: "z006_18", name: "img_18.jpg", url: "https://picsum.photos/seed/006_18/800/1200" },  // ← REPLACE URL for 006.zip image 18
+      { id: "z006_19", name: "img_19.jpg", url: "https://picsum.photos/seed/006_19/800/1200" },  // ← REPLACE URL for 006.zip image 19
+      { id: "z006_20", name: "img_20.jpg", url: "https://picsum.photos/seed/006_20/800/1200" }  // ← REPLACE URL for 006.zip image 20
+    ]
+  },
+  "z007": {
+    id: "z007", name: "007.zip", type: "zip",
+    images: [
+      { id: "z007_1", name: "img_01.jpg", url: "https://picsum.photos/seed/007_01/800/1200" },  // ← REPLACE URL for 007.zip image 01
+      { id: "z007_2", name: "img_02.jpg", url: "https://picsum.photos/seed/007_02/800/1200" },  // ← REPLACE URL for 007.zip image 02
+      { id: "z007_3", name: "img_03.jpg", url: "https://picsum.photos/seed/007_03/800/1200" },  // ← REPLACE URL for 007.zip image 03
+      { id: "z007_4", name: "img_04.jpg", url: "https://picsum.photos/seed/007_04/800/1200" },  // ← REPLACE URL for 007.zip image 04
+      { id: "z007_5", name: "img_05.jpg", url: "https://picsum.photos/seed/007_05/800/1200" },  // ← REPLACE URL for 007.zip image 05
+      { id: "z007_6", name: "img_06.jpg", url: "https://picsum.photos/seed/007_06/800/1200" },  // ← REPLACE URL for 007.zip image 06
+      { id: "z007_7", name: "img_07.jpg", url: "https://picsum.photos/seed/007_07/800/1200" },  // ← REPLACE URL for 007.zip image 07
+      { id: "z007_8", name: "img_08.jpg", url: "https://picsum.photos/seed/007_08/800/1200" },  // ← REPLACE URL for 007.zip image 08
+      { id: "z007_9", name: "img_09.jpg", url: "https://picsum.photos/seed/007_09/800/1200" },  // ← REPLACE URL for 007.zip image 09
+      { id: "z007_10", name: "img_10.jpg", url: "https://picsum.photos/seed/007_10/800/1200" },  // ← REPLACE URL for 007.zip image 10
+      { id: "z007_11", name: "img_11.jpg", url: "https://picsum.photos/seed/007_11/800/1200" },  // ← REPLACE URL for 007.zip image 11
+      { id: "z007_12", name: "img_12.jpg", url: "https://picsum.photos/seed/007_12/800/1200" },  // ← REPLACE URL for 007.zip image 12
+      { id: "z007_13", name: "img_13.jpg", url: "https://picsum.photos/seed/007_13/800/1200" },  // ← REPLACE URL for 007.zip image 13
+      { id: "z007_14", name: "img_14.jpg", url: "https://picsum.photos/seed/007_14/800/1200" },  // ← REPLACE URL for 007.zip image 14
+      { id: "z007_15", name: "img_15.jpg", url: "https://picsum.photos/seed/007_15/800/1200" },  // ← REPLACE URL for 007.zip image 15
+      { id: "z007_16", name: "img_16.jpg", url: "https://picsum.photos/seed/007_16/800/1200" },  // ← REPLACE URL for 007.zip image 16
+      { id: "z007_17", name: "img_17.jpg", url: "https://picsum.photos/seed/007_17/800/1200" },  // ← REPLACE URL for 007.zip image 17
+      { id: "z007_18", name: "img_18.jpg", url: "https://picsum.photos/seed/007_18/800/1200" },  // ← REPLACE URL for 007.zip image 18
+      { id: "z007_19", name: "img_19.jpg", url: "https://picsum.photos/seed/007_19/800/1200" },  // ← REPLACE URL for 007.zip image 19
+      { id: "z007_20", name: "img_20.jpg", url: "https://picsum.photos/seed/007_20/800/1200" }  // ← REPLACE URL for 007.zip image 20
+    ]
+  },
+  "z008": {
+    id: "z008", name: "008.zip", type: "zip",
+    images: [
+      { id: "z008_1", name: "img_01.jpg", url: "https://picsum.photos/seed/008_01/800/1200" },  // ← REPLACE URL for 008.zip image 01
+      { id: "z008_2", name: "img_02.jpg", url: "https://picsum.photos/seed/008_02/800/1200" },  // ← REPLACE URL for 008.zip image 02
+      { id: "z008_3", name: "img_03.jpg", url: "https://picsum.photos/seed/008_03/800/1200" },  // ← REPLACE URL for 008.zip image 03
+      { id: "z008_4", name: "img_04.jpg", url: "https://picsum.photos/seed/008_04/800/1200" },  // ← REPLACE URL for 008.zip image 04
+      { id: "z008_5", name: "img_05.jpg", url: "https://picsum.photos/seed/008_05/800/1200" },  // ← REPLACE URL for 008.zip image 05
+      { id: "z008_6", name: "img_06.jpg", url: "https://picsum.photos/seed/008_06/800/1200" },  // ← REPLACE URL for 008.zip image 06
+      { id: "z008_7", name: "img_07.jpg", url: "https://picsum.photos/seed/008_07/800/1200" },  // ← REPLACE URL for 008.zip image 07
+      { id: "z008_8", name: "img_08.jpg", url: "https://picsum.photos/seed/008_08/800/1200" },  // ← REPLACE URL for 008.zip image 08
+      { id: "z008_9", name: "img_09.jpg", url: "https://picsum.photos/seed/008_09/800/1200" },  // ← REPLACE URL for 008.zip image 09
+      { id: "z008_10", name: "img_10.jpg", url: "https://picsum.photos/seed/008_10/800/1200" },  // ← REPLACE URL for 008.zip image 10
+      { id: "z008_11", name: "img_11.jpg", url: "https://picsum.photos/seed/008_11/800/1200" },  // ← REPLACE URL for 008.zip image 11
+      { id: "z008_12", name: "img_12.jpg", url: "https://picsum.photos/seed/008_12/800/1200" },  // ← REPLACE URL for 008.zip image 12
+      { id: "z008_13", name: "img_13.jpg", url: "https://picsum.photos/seed/008_13/800/1200" },  // ← REPLACE URL for 008.zip image 13
+      { id: "z008_14", name: "img_14.jpg", url: "https://picsum.photos/seed/008_14/800/1200" },  // ← REPLACE URL for 008.zip image 14
+      { id: "z008_15", name: "img_15.jpg", url: "https://picsum.photos/seed/008_15/800/1200" },  // ← REPLACE URL for 008.zip image 15
+      { id: "z008_16", name: "img_16.jpg", url: "https://picsum.photos/seed/008_16/800/1200" },  // ← REPLACE URL for 008.zip image 16
+      { id: "z008_17", name: "img_17.jpg", url: "https://picsum.photos/seed/008_17/800/1200" },  // ← REPLACE URL for 008.zip image 17
+      { id: "z008_18", name: "img_18.jpg", url: "https://picsum.photos/seed/008_18/800/1200" },  // ← REPLACE URL for 008.zip image 18
+      { id: "z008_19", name: "img_19.jpg", url: "https://picsum.photos/seed/008_19/800/1200" },  // ← REPLACE URL for 008.zip image 19
+      { id: "z008_20", name: "img_20.jpg", url: "https://picsum.photos/seed/008_20/800/1200" }  // ← REPLACE URL for 008.zip image 20
+    ]
+  },
+  "z009": {
+    id: "z009", name: "009.zip", type: "zip",
+    images: [
+      { id: "z009_1", name: "img_01.jpg", url: "https://picsum.photos/seed/009_01/800/1200" },  // ← REPLACE URL for 009.zip image 01
+      { id: "z009_2", name: "img_02.jpg", url: "https://picsum.photos/seed/009_02/800/1200" },  // ← REPLACE URL for 009.zip image 02
+      { id: "z009_3", name: "img_03.jpg", url: "https://picsum.photos/seed/009_03/800/1200" },  // ← REPLACE URL for 009.zip image 03
+      { id: "z009_4", name: "img_04.jpg", url: "https://picsum.photos/seed/009_04/800/1200" },  // ← REPLACE URL for 009.zip image 04
+      { id: "z009_5", name: "img_05.jpg", url: "https://picsum.photos/seed/009_05/800/1200" },  // ← REPLACE URL for 009.zip image 05
+      { id: "z009_6", name: "img_06.jpg", url: "https://picsum.photos/seed/009_06/800/1200" },  // ← REPLACE URL for 009.zip image 06
+      { id: "z009_7", name: "img_07.jpg", url: "https://picsum.photos/seed/009_07/800/1200" },  // ← REPLACE URL for 009.zip image 07
+      { id: "z009_8", name: "img_08.jpg", url: "https://picsum.photos/seed/009_08/800/1200" },  // ← REPLACE URL for 009.zip image 08
+      { id: "z009_9", name: "img_09.jpg", url: "https://picsum.photos/seed/009_09/800/1200" },  // ← REPLACE URL for 009.zip image 09
+      { id: "z009_10", name: "img_10.jpg", url: "https://picsum.photos/seed/009_10/800/1200" },  // ← REPLACE URL for 009.zip image 10
+      { id: "z009_11", name: "img_11.jpg", url: "https://picsum.photos/seed/009_11/800/1200" },  // ← REPLACE URL for 009.zip image 11
+      { id: "z009_12", name: "img_12.jpg", url: "https://picsum.photos/seed/009_12/800/1200" },  // ← REPLACE URL for 009.zip image 12
+      { id: "z009_13", name: "img_13.jpg", url: "https://picsum.photos/seed/009_13/800/1200" },  // ← REPLACE URL for 009.zip image 13
+      { id: "z009_14", name: "img_14.jpg", url: "https://picsum.photos/seed/009_14/800/1200" },  // ← REPLACE URL for 009.zip image 14
+      { id: "z009_15", name: "img_15.jpg", url: "https://picsum.photos/seed/009_15/800/1200" },  // ← REPLACE URL for 009.zip image 15
+      { id: "z009_16", name: "img_16.jpg", url: "https://picsum.photos/seed/009_16/800/1200" },  // ← REPLACE URL for 009.zip image 16
+      { id: "z009_17", name: "img_17.jpg", url: "https://picsum.photos/seed/009_17/800/1200" },  // ← REPLACE URL for 009.zip image 17
+      { id: "z009_18", name: "img_18.jpg", url: "https://picsum.photos/seed/009_18/800/1200" },  // ← REPLACE URL for 009.zip image 18
+      { id: "z009_19", name: "img_19.jpg", url: "https://picsum.photos/seed/009_19/800/1200" },  // ← REPLACE URL for 009.zip image 19
+      { id: "z009_20", name: "img_20.jpg", url: "https://picsum.photos/seed/009_20/800/1200" }  // ← REPLACE URL for 009.zip image 20
+    ]
+  },
+  "z010": {
+    id: "z010", name: "010.zip", type: "zip",
+    images: [
+      { id: "z010_1", name: "img_01.jpg", url: "https://picsum.photos/seed/010_01/800/1200" },  // ← REPLACE URL for 010.zip image 01
+      { id: "z010_2", name: "img_02.jpg", url: "https://picsum.photos/seed/010_02/800/1200" },  // ← REPLACE URL for 010.zip image 02
+      { id: "z010_3", name: "img_03.jpg", url: "https://picsum.photos/seed/010_03/800/1200" },  // ← REPLACE URL for 010.zip image 03
+      { id: "z010_4", name: "img_04.jpg", url: "https://picsum.photos/seed/010_04/800/1200" },  // ← REPLACE URL for 010.zip image 04
+      { id: "z010_5", name: "img_05.jpg", url: "https://picsum.photos/seed/010_05/800/1200" },  // ← REPLACE URL for 010.zip image 05
+      { id: "z010_6", name: "img_06.jpg", url: "https://picsum.photos/seed/010_06/800/1200" },  // ← REPLACE URL for 010.zip image 06
+      { id: "z010_7", name: "img_07.jpg", url: "https://picsum.photos/seed/010_07/800/1200" },  // ← REPLACE URL for 010.zip image 07
+      { id: "z010_8", name: "img_08.jpg", url: "https://picsum.photos/seed/010_08/800/1200" },  // ← REPLACE URL for 010.zip image 08
+      { id: "z010_9", name: "img_09.jpg", url: "https://picsum.photos/seed/010_09/800/1200" },  // ← REPLACE URL for 010.zip image 09
+      { id: "z010_10", name: "img_10.jpg", url: "https://picsum.photos/seed/010_10/800/1200" },  // ← REPLACE URL for 010.zip image 10
+      { id: "z010_11", name: "img_11.jpg", url: "https://picsum.photos/seed/010_11/800/1200" },  // ← REPLACE URL for 010.zip image 11
+      { id: "z010_12", name: "img_12.jpg", url: "https://picsum.photos/seed/010_12/800/1200" },  // ← REPLACE URL for 010.zip image 12
+      { id: "z010_13", name: "img_13.jpg", url: "https://picsum.photos/seed/010_13/800/1200" },  // ← REPLACE URL for 010.zip image 13
+      { id: "z010_14", name: "img_14.jpg", url: "https://picsum.photos/seed/010_14/800/1200" },  // ← REPLACE URL for 010.zip image 14
+      { id: "z010_15", name: "img_15.jpg", url: "https://picsum.photos/seed/010_15/800/1200" },  // ← REPLACE URL for 010.zip image 15
+      { id: "z010_16", name: "img_16.jpg", url: "https://picsum.photos/seed/010_16/800/1200" },  // ← REPLACE URL for 010.zip image 16
+      { id: "z010_17", name: "img_17.jpg", url: "https://picsum.photos/seed/010_17/800/1200" },  // ← REPLACE URL for 010.zip image 17
+      { id: "z010_18", name: "img_18.jpg", url: "https://picsum.photos/seed/010_18/800/1200" },  // ← REPLACE URL for 010.zip image 18
+      { id: "z010_19", name: "img_19.jpg", url: "https://picsum.photos/seed/010_19/800/1200" },  // ← REPLACE URL for 010.zip image 19
+      { id: "z010_20", name: "img_20.jpg", url: "https://picsum.photos/seed/010_20/800/1200" }  // ← REPLACE URL for 010.zip image 20
+    ]
+  },
+  "z011": {
+    id: "z011", name: "011.zip", type: "zip",
+    images: [
+      { id: "z011_1", name: "img_01.jpg", url: "https://picsum.photos/seed/011_01/800/1200" },  // ← REPLACE URL for 011.zip image 01
+      { id: "z011_2", name: "img_02.jpg", url: "https://picsum.photos/seed/011_02/800/1200" },  // ← REPLACE URL for 011.zip image 02
+      { id: "z011_3", name: "img_03.jpg", url: "https://picsum.photos/seed/011_03/800/1200" },  // ← REPLACE URL for 011.zip image 03
+      { id: "z011_4", name: "img_04.jpg", url: "https://picsum.photos/seed/011_04/800/1200" },  // ← REPLACE URL for 011.zip image 04
+      { id: "z011_5", name: "img_05.jpg", url: "https://picsum.photos/seed/011_05/800/1200" },  // ← REPLACE URL for 011.zip image 05
+      { id: "z011_6", name: "img_06.jpg", url: "https://picsum.photos/seed/011_06/800/1200" },  // ← REPLACE URL for 011.zip image 06
+      { id: "z011_7", name: "img_07.jpg", url: "https://picsum.photos/seed/011_07/800/1200" },  // ← REPLACE URL for 011.zip image 07
+      { id: "z011_8", name: "img_08.jpg", url: "https://picsum.photos/seed/011_08/800/1200" },  // ← REPLACE URL for 011.zip image 08
+      { id: "z011_9", name: "img_09.jpg", url: "https://picsum.photos/seed/011_09/800/1200" },  // ← REPLACE URL for 011.zip image 09
+      { id: "z011_10", name: "img_10.jpg", url: "https://picsum.photos/seed/011_10/800/1200" },  // ← REPLACE URL for 011.zip image 10
+      { id: "z011_11", name: "img_11.jpg", url: "https://picsum.photos/seed/011_11/800/1200" },  // ← REPLACE URL for 011.zip image 11
+      { id: "z011_12", name: "img_12.jpg", url: "https://picsum.photos/seed/011_12/800/1200" },  // ← REPLACE URL for 011.zip image 12
+      { id: "z011_13", name: "img_13.jpg", url: "https://picsum.photos/seed/011_13/800/1200" },  // ← REPLACE URL for 011.zip image 13
+      { id: "z011_14", name: "img_14.jpg", url: "https://picsum.photos/seed/011_14/800/1200" },  // ← REPLACE URL for 011.zip image 14
+      { id: "z011_15", name: "img_15.jpg", url: "https://picsum.photos/seed/011_15/800/1200" },  // ← REPLACE URL for 011.zip image 15
+      { id: "z011_16", name: "img_16.jpg", url: "https://picsum.photos/seed/011_16/800/1200" },  // ← REPLACE URL for 011.zip image 16
+      { id: "z011_17", name: "img_17.jpg", url: "https://picsum.photos/seed/011_17/800/1200" },  // ← REPLACE URL for 011.zip image 17
+      { id: "z011_18", name: "img_18.jpg", url: "https://picsum.photos/seed/011_18/800/1200" },  // ← REPLACE URL for 011.zip image 18
+      { id: "z011_19", name: "img_19.jpg", url: "https://picsum.photos/seed/011_19/800/1200" },  // ← REPLACE URL for 011.zip image 19
+      { id: "z011_20", name: "img_20.jpg", url: "https://picsum.photos/seed/011_20/800/1200" }  // ← REPLACE URL for 011.zip image 20
+    ]
+  },
+  "z012": {
+    id: "z012", name: "012.zip", type: "zip",
+    images: [
+      { id: "z012_1", name: "img_01.jpg", url: "https://picsum.photos/seed/012_01/800/1200" },  // ← REPLACE URL for 012.zip image 01
+      { id: "z012_2", name: "img_02.jpg", url: "https://picsum.photos/seed/012_02/800/1200" },  // ← REPLACE URL for 012.zip image 02
+      { id: "z012_3", name: "img_03.jpg", url: "https://picsum.photos/seed/012_03/800/1200" },  // ← REPLACE URL for 012.zip image 03
+      { id: "z012_4", name: "img_04.jpg", url: "https://picsum.photos/seed/012_04/800/1200" },  // ← REPLACE URL for 012.zip image 04
+      { id: "z012_5", name: "img_05.jpg", url: "https://picsum.photos/seed/012_05/800/1200" },  // ← REPLACE URL for 012.zip image 05
+      { id: "z012_6", name: "img_06.jpg", url: "https://picsum.photos/seed/012_06/800/1200" },  // ← REPLACE URL for 012.zip image 06
+      { id: "z012_7", name: "img_07.jpg", url: "https://picsum.photos/seed/012_07/800/1200" },  // ← REPLACE URL for 012.zip image 07
+      { id: "z012_8", name: "img_08.jpg", url: "https://picsum.photos/seed/012_08/800/1200" },  // ← REPLACE URL for 012.zip image 08
+      { id: "z012_9", name: "img_09.jpg", url: "https://picsum.photos/seed/012_09/800/1200" },  // ← REPLACE URL for 012.zip image 09
+      { id: "z012_10", name: "img_10.jpg", url: "https://picsum.photos/seed/012_10/800/1200" },  // ← REPLACE URL for 012.zip image 10
+      { id: "z012_11", name: "img_11.jpg", url: "https://picsum.photos/seed/012_11/800/1200" },  // ← REPLACE URL for 012.zip image 11
+      { id: "z012_12", name: "img_12.jpg", url: "https://picsum.photos/seed/012_12/800/1200" },  // ← REPLACE URL for 012.zip image 12
+      { id: "z012_13", name: "img_13.jpg", url: "https://picsum.photos/seed/012_13/800/1200" },  // ← REPLACE URL for 012.zip image 13
+      { id: "z012_14", name: "img_14.jpg", url: "https://picsum.photos/seed/012_14/800/1200" },  // ← REPLACE URL for 012.zip image 14
+      { id: "z012_15", name: "img_15.jpg", url: "https://picsum.photos/seed/012_15/800/1200" },  // ← REPLACE URL for 012.zip image 15
+      { id: "z012_16", name: "img_16.jpg", url: "https://picsum.photos/seed/012_16/800/1200" },  // ← REPLACE URL for 012.zip image 16
+      { id: "z012_17", name: "img_17.jpg", url: "https://picsum.photos/seed/012_17/800/1200" },  // ← REPLACE URL for 012.zip image 17
+      { id: "z012_18", name: "img_18.jpg", url: "https://picsum.photos/seed/012_18/800/1200" },  // ← REPLACE URL for 012.zip image 18
+      { id: "z012_19", name: "img_19.jpg", url: "https://picsum.photos/seed/012_19/800/1200" },  // ← REPLACE URL for 012.zip image 19
+      { id: "z012_20", name: "img_20.jpg", url: "https://picsum.photos/seed/012_20/800/1200" }  // ← REPLACE URL for 012.zip image 20
+    ]
+  },
+  "z013": {
+    id: "z013", name: "013.zip", type: "zip",
+    images: [
+      { id: "z013_1", name: "img_01.jpg", url: "https://picsum.photos/seed/013_01/800/1200" },  // ← REPLACE URL for 013.zip image 01
+      { id: "z013_2", name: "img_02.jpg", url: "https://picsum.photos/seed/013_02/800/1200" },  // ← REPLACE URL for 013.zip image 02
+      { id: "z013_3", name: "img_03.jpg", url: "https://picsum.photos/seed/013_03/800/1200" },  // ← REPLACE URL for 013.zip image 03
+      { id: "z013_4", name: "img_04.jpg", url: "https://picsum.photos/seed/013_04/800/1200" },  // ← REPLACE URL for 013.zip image 04
+      { id: "z013_5", name: "img_05.jpg", url: "https://picsum.photos/seed/013_05/800/1200" },  // ← REPLACE URL for 013.zip image 05
+      { id: "z013_6", name: "img_06.jpg", url: "https://picsum.photos/seed/013_06/800/1200" },  // ← REPLACE URL for 013.zip image 06
+      { id: "z013_7", name: "img_07.jpg", url: "https://picsum.photos/seed/013_07/800/1200" },  // ← REPLACE URL for 013.zip image 07
+      { id: "z013_8", name: "img_08.jpg", url: "https://picsum.photos/seed/013_08/800/1200" },  // ← REPLACE URL for 013.zip image 08
+      { id: "z013_9", name: "img_09.jpg", url: "https://picsum.photos/seed/013_09/800/1200" },  // ← REPLACE URL for 013.zip image 09
+      { id: "z013_10", name: "img_10.jpg", url: "https://picsum.photos/seed/013_10/800/1200" },  // ← REPLACE URL for 013.zip image 10
+      { id: "z013_11", name: "img_11.jpg", url: "https://picsum.photos/seed/013_11/800/1200" },  // ← REPLACE URL for 013.zip image 11
+      { id: "z013_12", name: "img_12.jpg", url: "https://picsum.photos/seed/013_12/800/1200" },  // ← REPLACE URL for 013.zip image 12
+      { id: "z013_13", name: "img_13.jpg", url: "https://picsum.photos/seed/013_13/800/1200" },  // ← REPLACE URL for 013.zip image 13
+      { id: "z013_14", name: "img_14.jpg", url: "https://picsum.photos/seed/013_14/800/1200" },  // ← REPLACE URL for 013.zip image 14
+      { id: "z013_15", name: "img_15.jpg", url: "https://picsum.photos/seed/013_15/800/1200" },  // ← REPLACE URL for 013.zip image 15
+      { id: "z013_16", name: "img_16.jpg", url: "https://picsum.photos/seed/013_16/800/1200" },  // ← REPLACE URL for 013.zip image 16
+      { id: "z013_17", name: "img_17.jpg", url: "https://picsum.photos/seed/013_17/800/1200" },  // ← REPLACE URL for 013.zip image 17
+      { id: "z013_18", name: "img_18.jpg", url: "https://picsum.photos/seed/013_18/800/1200" },  // ← REPLACE URL for 013.zip image 18
+      { id: "z013_19", name: "img_19.jpg", url: "https://picsum.photos/seed/013_19/800/1200" },  // ← REPLACE URL for 013.zip image 19
+      { id: "z013_20", name: "img_20.jpg", url: "https://picsum.photos/seed/013_20/800/1200" }  // ← REPLACE URL for 013.zip image 20
+    ]
+  },
+  "z014": {
+    id: "z014", name: "014.zip", type: "zip",
+    images: [
+      { id: "z014_1", name: "img_01.jpg", url: "https://picsum.photos/seed/014_01/800/1200" },  // ← REPLACE URL for 014.zip image 01
+      { id: "z014_2", name: "img_02.jpg", url: "https://picsum.photos/seed/014_02/800/1200" },  // ← REPLACE URL for 014.zip image 02
+      { id: "z014_3", name: "img_03.jpg", url: "https://picsum.photos/seed/014_03/800/1200" },  // ← REPLACE URL for 014.zip image 03
+      { id: "z014_4", name: "img_04.jpg", url: "https://picsum.photos/seed/014_04/800/1200" },  // ← REPLACE URL for 014.zip image 04
+      { id: "z014_5", name: "img_05.jpg", url: "https://picsum.photos/seed/014_05/800/1200" },  // ← REPLACE URL for 014.zip image 05
+      { id: "z014_6", name: "img_06.jpg", url: "https://picsum.photos/seed/014_06/800/1200" },  // ← REPLACE URL for 014.zip image 06
+      { id: "z014_7", name: "img_07.jpg", url: "https://picsum.photos/seed/014_07/800/1200" },  // ← REPLACE URL for 014.zip image 07
+      { id: "z014_8", name: "img_08.jpg", url: "https://picsum.photos/seed/014_08/800/1200" },  // ← REPLACE URL for 014.zip image 08
+      { id: "z014_9", name: "img_09.jpg", url: "https://picsum.photos/seed/014_09/800/1200" },  // ← REPLACE URL for 014.zip image 09
+      { id: "z014_10", name: "img_10.jpg", url: "https://picsum.photos/seed/014_10/800/1200" },  // ← REPLACE URL for 014.zip image 10
+      { id: "z014_11", name: "img_11.jpg", url: "https://picsum.photos/seed/014_11/800/1200" },  // ← REPLACE URL for 014.zip image 11
+      { id: "z014_12", name: "img_12.jpg", url: "https://picsum.photos/seed/014_12/800/1200" },  // ← REPLACE URL for 014.zip image 12
+      { id: "z014_13", name: "img_13.jpg", url: "https://picsum.photos/seed/014_13/800/1200" },  // ← REPLACE URL for 014.zip image 13
+      { id: "z014_14", name: "img_14.jpg", url: "https://picsum.photos/seed/014_14/800/1200" },  // ← REPLACE URL for 014.zip image 14
+      { id: "z014_15", name: "img_15.jpg", url: "https://picsum.photos/seed/014_15/800/1200" },  // ← REPLACE URL for 014.zip image 15
+      { id: "z014_16", name: "img_16.jpg", url: "https://picsum.photos/seed/014_16/800/1200" },  // ← REPLACE URL for 014.zip image 16
+      { id: "z014_17", name: "img_17.jpg", url: "https://picsum.photos/seed/014_17/800/1200" },  // ← REPLACE URL for 014.zip image 17
+      { id: "z014_18", name: "img_18.jpg", url: "https://picsum.photos/seed/014_18/800/1200" },  // ← REPLACE URL for 014.zip image 18
+      { id: "z014_19", name: "img_19.jpg", url: "https://picsum.photos/seed/014_19/800/1200" },  // ← REPLACE URL for 014.zip image 19
+      { id: "z014_20", name: "img_20.jpg", url: "https://picsum.photos/seed/014_20/800/1200" }  // ← REPLACE URL for 014.zip image 20
+    ]
+  },
+  "z015": {
+    id: "z015", name: "015.zip", type: "zip",
+    images: [
+      { id: "z015_1", name: "img_01.jpg", url: "https://picsum.photos/seed/015_01/800/1200" },  // ← REPLACE URL for 015.zip image 01
+      { id: "z015_2", name: "img_02.jpg", url: "https://picsum.photos/seed/015_02/800/1200" },  // ← REPLACE URL for 015.zip image 02
+      { id: "z015_3", name: "img_03.jpg", url: "https://picsum.photos/seed/015_03/800/1200" },  // ← REPLACE URL for 015.zip image 03
+      { id: "z015_4", name: "img_04.jpg", url: "https://picsum.photos/seed/015_04/800/1200" },  // ← REPLACE URL for 015.zip image 04
+      { id: "z015_5", name: "img_05.jpg", url: "https://picsum.photos/seed/015_05/800/1200" },  // ← REPLACE URL for 015.zip image 05
+      { id: "z015_6", name: "img_06.jpg", url: "https://picsum.photos/seed/015_06/800/1200" },  // ← REPLACE URL for 015.zip image 06
+      { id: "z015_7", name: "img_07.jpg", url: "https://picsum.photos/seed/015_07/800/1200" },  // ← REPLACE URL for 015.zip image 07
+      { id: "z015_8", name: "img_08.jpg", url: "https://picsum.photos/seed/015_08/800/1200" },  // ← REPLACE URL for 015.zip image 08
+      { id: "z015_9", name: "img_09.jpg", url: "https://picsum.photos/seed/015_09/800/1200" },  // ← REPLACE URL for 015.zip image 09
+      { id: "z015_10", name: "img_10.jpg", url: "https://picsum.photos/seed/015_10/800/1200" },  // ← REPLACE URL for 015.zip image 10
+      { id: "z015_11", name: "img_11.jpg", url: "https://picsum.photos/seed/015_11/800/1200" },  // ← REPLACE URL for 015.zip image 11
+      { id: "z015_12", name: "img_12.jpg", url: "https://picsum.photos/seed/015_12/800/1200" },  // ← REPLACE URL for 015.zip image 12
+      { id: "z015_13", name: "img_13.jpg", url: "https://picsum.photos/seed/015_13/800/1200" },  // ← REPLACE URL for 015.zip image 13
+      { id: "z015_14", name: "img_14.jpg", url: "https://picsum.photos/seed/015_14/800/1200" },  // ← REPLACE URL for 015.zip image 14
+      { id: "z015_15", name: "img_15.jpg", url: "https://picsum.photos/seed/015_15/800/1200" },  // ← REPLACE URL for 015.zip image 15
+      { id: "z015_16", name: "img_16.jpg", url: "https://picsum.photos/seed/015_16/800/1200" },  // ← REPLACE URL for 015.zip image 16
+      { id: "z015_17", name: "img_17.jpg", url: "https://picsum.photos/seed/015_17/800/1200" },  // ← REPLACE URL for 015.zip image 17
+      { id: "z015_18", name: "img_18.jpg", url: "https://picsum.photos/seed/015_18/800/1200" },  // ← REPLACE URL for 015.zip image 18
+      { id: "z015_19", name: "img_19.jpg", url: "https://picsum.photos/seed/015_19/800/1200" },  // ← REPLACE URL for 015.zip image 19
+      { id: "z015_20", name: "img_20.jpg", url: "https://picsum.photos/seed/015_20/800/1200" }  // ← REPLACE URL for 015.zip image 20
+    ]
+  },
+  "z016": {
+    id: "z016", name: "016.zip", type: "zip",
+    images: [
+      { id: "z016_1", name: "img_01.jpg", url: "https://picsum.photos/seed/016_01/800/1200" },  // ← REPLACE URL for 016.zip image 01
+      { id: "z016_2", name: "img_02.jpg", url: "https://picsum.photos/seed/016_02/800/1200" },  // ← REPLACE URL for 016.zip image 02
+      { id: "z016_3", name: "img_03.jpg", url: "https://picsum.photos/seed/016_03/800/1200" },  // ← REPLACE URL for 016.zip image 03
+      { id: "z016_4", name: "img_04.jpg", url: "https://picsum.photos/seed/016_04/800/1200" },  // ← REPLACE URL for 016.zip image 04
+      { id: "z016_5", name: "img_05.jpg", url: "https://picsum.photos/seed/016_05/800/1200" },  // ← REPLACE URL for 016.zip image 05
+      { id: "z016_6", name: "img_06.jpg", url: "https://picsum.photos/seed/016_06/800/1200" },  // ← REPLACE URL for 016.zip image 06
+      { id: "z016_7", name: "img_07.jpg", url: "https://picsum.photos/seed/016_07/800/1200" },  // ← REPLACE URL for 016.zip image 07
+      { id: "z016_8", name: "img_08.jpg", url: "https://picsum.photos/seed/016_08/800/1200" },  // ← REPLACE URL for 016.zip image 08
+      { id: "z016_9", name: "img_09.jpg", url: "https://picsum.photos/seed/016_09/800/1200" },  // ← REPLACE URL for 016.zip image 09
+      { id: "z016_10", name: "img_10.jpg", url: "https://picsum.photos/seed/016_10/800/1200" },  // ← REPLACE URL for 016.zip image 10
+      { id: "z016_11", name: "img_11.jpg", url: "https://picsum.photos/seed/016_11/800/1200" },  // ← REPLACE URL for 016.zip image 11
+      { id: "z016_12", name: "img_12.jpg", url: "https://picsum.photos/seed/016_12/800/1200" },  // ← REPLACE URL for 016.zip image 12
+      { id: "z016_13", name: "img_13.jpg", url: "https://picsum.photos/seed/016_13/800/1200" },  // ← REPLACE URL for 016.zip image 13
+      { id: "z016_14", name: "img_14.jpg", url: "https://picsum.photos/seed/016_14/800/1200" },  // ← REPLACE URL for 016.zip image 14
+      { id: "z016_15", name: "img_15.jpg", url: "https://picsum.photos/seed/016_15/800/1200" },  // ← REPLACE URL for 016.zip image 15
+      { id: "z016_16", name: "img_16.jpg", url: "https://picsum.photos/seed/016_16/800/1200" },  // ← REPLACE URL for 016.zip image 16
+      { id: "z016_17", name: "img_17.jpg", url: "https://picsum.photos/seed/016_17/800/1200" },  // ← REPLACE URL for 016.zip image 17
+      { id: "z016_18", name: "img_18.jpg", url: "https://picsum.photos/seed/016_18/800/1200" },  // ← REPLACE URL for 016.zip image 18
+      { id: "z016_19", name: "img_19.jpg", url: "https://picsum.photos/seed/016_19/800/1200" },  // ← REPLACE URL for 016.zip image 19
+      { id: "z016_20", name: "img_20.jpg", url: "https://picsum.photos/seed/016_20/800/1200" }  // ← REPLACE URL for 016.zip image 20
+    ]
+  },
+  "z017": {
+    id: "z017", name: "017.zip", type: "zip",
+    images: [
+      { id: "z017_1", name: "img_01.jpg", url: "https://picsum.photos/seed/017_01/800/1200" },  // ← REPLACE URL for 017.zip image 01
+      { id: "z017_2", name: "img_02.jpg", url: "https://picsum.photos/seed/017_02/800/1200" },  // ← REPLACE URL for 017.zip image 02
+      { id: "z017_3", name: "img_03.jpg", url: "https://picsum.photos/seed/017_03/800/1200" },  // ← REPLACE URL for 017.zip image 03
+      { id: "z017_4", name: "img_04.jpg", url: "https://picsum.photos/seed/017_04/800/1200" },  // ← REPLACE URL for 017.zip image 04
+      { id: "z017_5", name: "img_05.jpg", url: "https://picsum.photos/seed/017_05/800/1200" },  // ← REPLACE URL for 017.zip image 05
+      { id: "z017_6", name: "img_06.jpg", url: "https://picsum.photos/seed/017_06/800/1200" },  // ← REPLACE URL for 017.zip image 06
+      { id: "z017_7", name: "img_07.jpg", url: "https://picsum.photos/seed/017_07/800/1200" },  // ← REPLACE URL for 017.zip image 07
+      { id: "z017_8", name: "img_08.jpg", url: "https://picsum.photos/seed/017_08/800/1200" },  // ← REPLACE URL for 017.zip image 08
+      { id: "z017_9", name: "img_09.jpg", url: "https://picsum.photos/seed/017_09/800/1200" },  // ← REPLACE URL for 017.zip image 09
+      { id: "z017_10", name: "img_10.jpg", url: "https://picsum.photos/seed/017_10/800/1200" },  // ← REPLACE URL for 017.zip image 10
+      { id: "z017_11", name: "img_11.jpg", url: "https://picsum.photos/seed/017_11/800/1200" },  // ← REPLACE URL for 017.zip image 11
+      { id: "z017_12", name: "img_12.jpg", url: "https://picsum.photos/seed/017_12/800/1200" },  // ← REPLACE URL for 017.zip image 12
+      { id: "z017_13", name: "img_13.jpg", url: "https://picsum.photos/seed/017_13/800/1200" },  // ← REPLACE URL for 017.zip image 13
+      { id: "z017_14", name: "img_14.jpg", url: "https://picsum.photos/seed/017_14/800/1200" },  // ← REPLACE URL for 017.zip image 14
+      { id: "z017_15", name: "img_15.jpg", url: "https://picsum.photos/seed/017_15/800/1200" },  // ← REPLACE URL for 017.zip image 15
+      { id: "z017_16", name: "img_16.jpg", url: "https://picsum.photos/seed/017_16/800/1200" },  // ← REPLACE URL for 017.zip image 16
+      { id: "z017_17", name: "img_17.jpg", url: "https://picsum.photos/seed/017_17/800/1200" },  // ← REPLACE URL for 017.zip image 17
+      { id: "z017_18", name: "img_18.jpg", url: "https://picsum.photos/seed/017_18/800/1200" },  // ← REPLACE URL for 017.zip image 18
+      { id: "z017_19", name: "img_19.jpg", url: "https://picsum.photos/seed/017_19/800/1200" },  // ← REPLACE URL for 017.zip image 19
+      { id: "z017_20", name: "img_20.jpg", url: "https://picsum.photos/seed/017_20/800/1200" }  // ← REPLACE URL for 017.zip image 20
+    ]
+  },
+  "z018": {
+    id: "z018", name: "018.zip", type: "zip",
+    images: [
+      { id: "z018_1", name: "img_01.jpg", url: "https://picsum.photos/seed/018_01/800/1200" },  // ← REPLACE URL for 018.zip image 01
+      { id: "z018_2", name: "img_02.jpg", url: "https://picsum.photos/seed/018_02/800/1200" },  // ← REPLACE URL for 018.zip image 02
+      { id: "z018_3", name: "img_03.jpg", url: "https://picsum.photos/seed/018_03/800/1200" },  // ← REPLACE URL for 018.zip image 03
+      { id: "z018_4", name: "img_04.jpg", url: "https://picsum.photos/seed/018_04/800/1200" },  // ← REPLACE URL for 018.zip image 04
+      { id: "z018_5", name: "img_05.jpg", url: "https://picsum.photos/seed/018_05/800/1200" },  // ← REPLACE URL for 018.zip image 05
+      { id: "z018_6", name: "img_06.jpg", url: "https://picsum.photos/seed/018_06/800/1200" },  // ← REPLACE URL for 018.zip image 06
+      { id: "z018_7", name: "img_07.jpg", url: "https://picsum.photos/seed/018_07/800/1200" },  // ← REPLACE URL for 018.zip image 07
+      { id: "z018_8", name: "img_08.jpg", url: "https://picsum.photos/seed/018_08/800/1200" },  // ← REPLACE URL for 018.zip image 08
+      { id: "z018_9", name: "img_09.jpg", url: "https://picsum.photos/seed/018_09/800/1200" },  // ← REPLACE URL for 018.zip image 09
+      { id: "z018_10", name: "img_10.jpg", url: "https://picsum.photos/seed/018_10/800/1200" },  // ← REPLACE URL for 018.zip image 10
+      { id: "z018_11", name: "img_11.jpg", url: "https://picsum.photos/seed/018_11/800/1200" },  // ← REPLACE URL for 018.zip image 11
+      { id: "z018_12", name: "img_12.jpg", url: "https://picsum.photos/seed/018_12/800/1200" },  // ← REPLACE URL for 018.zip image 12
+      { id: "z018_13", name: "img_13.jpg", url: "https://picsum.photos/seed/018_13/800/1200" },  // ← REPLACE URL for 018.zip image 13
+      { id: "z018_14", name: "img_14.jpg", url: "https://picsum.photos/seed/018_14/800/1200" },  // ← REPLACE URL for 018.zip image 14
+      { id: "z018_15", name: "img_15.jpg", url: "https://picsum.photos/seed/018_15/800/1200" },  // ← REPLACE URL for 018.zip image 15
+      { id: "z018_16", name: "img_16.jpg", url: "https://picsum.photos/seed/018_16/800/1200" },  // ← REPLACE URL for 018.zip image 16
+      { id: "z018_17", name: "img_17.jpg", url: "https://picsum.photos/seed/018_17/800/1200" },  // ← REPLACE URL for 018.zip image 17
+      { id: "z018_18", name: "img_18.jpg", url: "https://picsum.photos/seed/018_18/800/1200" },  // ← REPLACE URL for 018.zip image 18
+      { id: "z018_19", name: "img_19.jpg", url: "https://picsum.photos/seed/018_19/800/1200" },  // ← REPLACE URL for 018.zip image 19
+      { id: "z018_20", name: "img_20.jpg", url: "https://picsum.photos/seed/018_20/800/1200" }  // ← REPLACE URL for 018.zip image 20
+    ]
+  },
+  "z019": {
+    id: "z019", name: "019.zip", type: "zip",
+    images: [
+      { id: "z019_1", name: "img_01.jpg", url: "https://picsum.photos/seed/019_01/800/1200" },  // ← REPLACE URL for 019.zip image 01
+      { id: "z019_2", name: "img_02.jpg", url: "https://picsum.photos/seed/019_02/800/1200" },  // ← REPLACE URL for 019.zip image 02
+      { id: "z019_3", name: "img_03.jpg", url: "https://picsum.photos/seed/019_03/800/1200" },  // ← REPLACE URL for 019.zip image 03
+      { id: "z019_4", name: "img_04.jpg", url: "https://picsum.photos/seed/019_04/800/1200" },  // ← REPLACE URL for 019.zip image 04
+      { id: "z019_5", name: "img_05.jpg", url: "https://picsum.photos/seed/019_05/800/1200" },  // ← REPLACE URL for 019.zip image 05
+      { id: "z019_6", name: "img_06.jpg", url: "https://picsum.photos/seed/019_06/800/1200" },  // ← REPLACE URL for 019.zip image 06
+      { id: "z019_7", name: "img_07.jpg", url: "https://picsum.photos/seed/019_07/800/1200" },  // ← REPLACE URL for 019.zip image 07
+      { id: "z019_8", name: "img_08.jpg", url: "https://picsum.photos/seed/019_08/800/1200" },  // ← REPLACE URL for 019.zip image 08
+      { id: "z019_9", name: "img_09.jpg", url: "https://picsum.photos/seed/019_09/800/1200" },  // ← REPLACE URL for 019.zip image 09
+      { id: "z019_10", name: "img_10.jpg", url: "https://picsum.photos/seed/019_10/800/1200" },  // ← REPLACE URL for 019.zip image 10
+      { id: "z019_11", name: "img_11.jpg", url: "https://picsum.photos/seed/019_11/800/1200" },  // ← REPLACE URL for 019.zip image 11
+      { id: "z019_12", name: "img_12.jpg", url: "https://picsum.photos/seed/019_12/800/1200" },  // ← REPLACE URL for 019.zip image 12
+      { id: "z019_13", name: "img_13.jpg", url: "https://picsum.photos/seed/019_13/800/1200" },  // ← REPLACE URL for 019.zip image 13
+      { id: "z019_14", name: "img_14.jpg", url: "https://picsum.photos/seed/019_14/800/1200" },  // ← REPLACE URL for 019.zip image 14
+      { id: "z019_15", name: "img_15.jpg", url: "https://picsum.photos/seed/019_15/800/1200" },  // ← REPLACE URL for 019.zip image 15
+      { id: "z019_16", name: "img_16.jpg", url: "https://picsum.photos/seed/019_16/800/1200" },  // ← REPLACE URL for 019.zip image 16
+      { id: "z019_17", name: "img_17.jpg", url: "https://picsum.photos/seed/019_17/800/1200" },  // ← REPLACE URL for 019.zip image 17
+      { id: "z019_18", name: "img_18.jpg", url: "https://picsum.photos/seed/019_18/800/1200" },  // ← REPLACE URL for 019.zip image 18
+      { id: "z019_19", name: "img_19.jpg", url: "https://picsum.photos/seed/019_19/800/1200" },  // ← REPLACE URL for 019.zip image 19
+      { id: "z019_20", name: "img_20.jpg", url: "https://picsum.photos/seed/019_20/800/1200" }  // ← REPLACE URL for 019.zip image 20
+    ]
+  },
+  "z020": {
+    id: "z020", name: "020.zip", type: "zip",
+    images: [
+      { id: "z020_1", name: "img_01.jpg", url: "https://picsum.photos/seed/020_01/800/1200" },  // ← REPLACE URL for 020.zip image 01
+      { id: "z020_2", name: "img_02.jpg", url: "https://picsum.photos/seed/020_02/800/1200" },  // ← REPLACE URL for 020.zip image 02
+      { id: "z020_3", name: "img_03.jpg", url: "https://picsum.photos/seed/020_03/800/1200" },  // ← REPLACE URL for 020.zip image 03
+      { id: "z020_4", name: "img_04.jpg", url: "https://picsum.photos/seed/020_04/800/1200" },  // ← REPLACE URL for 020.zip image 04
+      { id: "z020_5", name: "img_05.jpg", url: "https://picsum.photos/seed/020_05/800/1200" },  // ← REPLACE URL for 020.zip image 05
+      { id: "z020_6", name: "img_06.jpg", url: "https://picsum.photos/seed/020_06/800/1200" },  // ← REPLACE URL for 020.zip image 06
+      { id: "z020_7", name: "img_07.jpg", url: "https://picsum.photos/seed/020_07/800/1200" },  // ← REPLACE URL for 020.zip image 07
+      { id: "z020_8", name: "img_08.jpg", url: "https://picsum.photos/seed/020_08/800/1200" },  // ← REPLACE URL for 020.zip image 08
+      { id: "z020_9", name: "img_09.jpg", url: "https://picsum.photos/seed/020_09/800/1200" },  // ← REPLACE URL for 020.zip image 09
+      { id: "z020_10", name: "img_10.jpg", url: "https://picsum.photos/seed/020_10/800/1200" },  // ← REPLACE URL for 020.zip image 10
+      { id: "z020_11", name: "img_11.jpg", url: "https://picsum.photos/seed/020_11/800/1200" },  // ← REPLACE URL for 020.zip image 11
+      { id: "z020_12", name: "img_12.jpg", url: "https://picsum.photos/seed/020_12/800/1200" },  // ← REPLACE URL for 020.zip image 12
+      { id: "z020_13", name: "img_13.jpg", url: "https://picsum.photos/seed/020_13/800/1200" },  // ← REPLACE URL for 020.zip image 13
+      { id: "z020_14", name: "img_14.jpg", url: "https://picsum.photos/seed/020_14/800/1200" },  // ← REPLACE URL for 020.zip image 14
+      { id: "z020_15", name: "img_15.jpg", url: "https://picsum.photos/seed/020_15/800/1200" },  // ← REPLACE URL for 020.zip image 15
+      { id: "z020_16", name: "img_16.jpg", url: "https://picsum.photos/seed/020_16/800/1200" },  // ← REPLACE URL for 020.zip image 16
+      { id: "z020_17", name: "img_17.jpg", url: "https://picsum.photos/seed/020_17/800/1200" },  // ← REPLACE URL for 020.zip image 17
+      { id: "z020_18", name: "img_18.jpg", url: "https://picsum.photos/seed/020_18/800/1200" },  // ← REPLACE URL for 020.zip image 18
+      { id: "z020_19", name: "img_19.jpg", url: "https://picsum.photos/seed/020_19/800/1200" },  // ← REPLACE URL for 020.zip image 19
+      { id: "z020_20", name: "img_20.jpg", url: "https://picsum.photos/seed/020_20/800/1200" }  // ← REPLACE URL for 020.zip image 20
+    ]
+  },
+  "z021": {
+    id: "z021", name: "021.zip", type: "zip",
+    images: [
+      { id: "z021_1", name: "img_01.jpg", url: "https://picsum.photos/seed/021_01/800/1200" },  // ← REPLACE URL for 021.zip image 01
+      { id: "z021_2", name: "img_02.jpg", url: "https://picsum.photos/seed/021_02/800/1200" },  // ← REPLACE URL for 021.zip image 02
+      { id: "z021_3", name: "img_03.jpg", url: "https://picsum.photos/seed/021_03/800/1200" },  // ← REPLACE URL for 021.zip image 03
+      { id: "z021_4", name: "img_04.jpg", url: "https://picsum.photos/seed/021_04/800/1200" },  // ← REPLACE URL for 021.zip image 04
+      { id: "z021_5", name: "img_05.jpg", url: "https://picsum.photos/seed/021_05/800/1200" },  // ← REPLACE URL for 021.zip image 05
+      { id: "z021_6", name: "img_06.jpg", url: "https://picsum.photos/seed/021_06/800/1200" },  // ← REPLACE URL for 021.zip image 06
+      { id: "z021_7", name: "img_07.jpg", url: "https://picsum.photos/seed/021_07/800/1200" },  // ← REPLACE URL for 021.zip image 07
+      { id: "z021_8", name: "img_08.jpg", url: "https://picsum.photos/seed/021_08/800/1200" },  // ← REPLACE URL for 021.zip image 08
+      { id: "z021_9", name: "img_09.jpg", url: "https://picsum.photos/seed/021_09/800/1200" },  // ← REPLACE URL for 021.zip image 09
+      { id: "z021_10", name: "img_10.jpg", url: "https://picsum.photos/seed/021_10/800/1200" },  // ← REPLACE URL for 021.zip image 10
+      { id: "z021_11", name: "img_11.jpg", url: "https://picsum.photos/seed/021_11/800/1200" },  // ← REPLACE URL for 021.zip image 11
+      { id: "z021_12", name: "img_12.jpg", url: "https://picsum.photos/seed/021_12/800/1200" },  // ← REPLACE URL for 021.zip image 12
+      { id: "z021_13", name: "img_13.jpg", url: "https://picsum.photos/seed/021_13/800/1200" },  // ← REPLACE URL for 021.zip image 13
+      { id: "z021_14", name: "img_14.jpg", url: "https://picsum.photos/seed/021_14/800/1200" },  // ← REPLACE URL for 021.zip image 14
+      { id: "z021_15", name: "img_15.jpg", url: "https://picsum.photos/seed/021_15/800/1200" },  // ← REPLACE URL for 021.zip image 15
+      { id: "z021_16", name: "img_16.jpg", url: "https://picsum.photos/seed/021_16/800/1200" },  // ← REPLACE URL for 021.zip image 16
+      { id: "z021_17", name: "img_17.jpg", url: "https://picsum.photos/seed/021_17/800/1200" },  // ← REPLACE URL for 021.zip image 17
+      { id: "z021_18", name: "img_18.jpg", url: "https://picsum.photos/seed/021_18/800/1200" },  // ← REPLACE URL for 021.zip image 18
+      { id: "z021_19", name: "img_19.jpg", url: "https://picsum.photos/seed/021_19/800/1200" },  // ← REPLACE URL for 021.zip image 19
+      { id: "z021_20", name: "img_20.jpg", url: "https://picsum.photos/seed/021_20/800/1200" }  // ← REPLACE URL for 021.zip image 20
+    ]
+  },
+  "z022": {
+    id: "z022", name: "022.zip", type: "zip",
+    images: [
+      { id: "z022_1", name: "img_01.jpg", url: "https://picsum.photos/seed/022_01/800/1200" },  // ← REPLACE URL for 022.zip image 01
+      { id: "z022_2", name: "img_02.jpg", url: "https://picsum.photos/seed/022_02/800/1200" },  // ← REPLACE URL for 022.zip image 02
+      { id: "z022_3", name: "img_03.jpg", url: "https://picsum.photos/seed/022_03/800/1200" },  // ← REPLACE URL for 022.zip image 03
+      { id: "z022_4", name: "img_04.jpg", url: "https://picsum.photos/seed/022_04/800/1200" },  // ← REPLACE URL for 022.zip image 04
+      { id: "z022_5", name: "img_05.jpg", url: "https://picsum.photos/seed/022_05/800/1200" },  // ← REPLACE URL for 022.zip image 05
+      { id: "z022_6", name: "img_06.jpg", url: "https://picsum.photos/seed/022_06/800/1200" },  // ← REPLACE URL for 022.zip image 06
+      { id: "z022_7", name: "img_07.jpg", url: "https://picsum.photos/seed/022_07/800/1200" },  // ← REPLACE URL for 022.zip image 07
+      { id: "z022_8", name: "img_08.jpg", url: "https://picsum.photos/seed/022_08/800/1200" },  // ← REPLACE URL for 022.zip image 08
+      { id: "z022_9", name: "img_09.jpg", url: "https://picsum.photos/seed/022_09/800/1200" },  // ← REPLACE URL for 022.zip image 09
+      { id: "z022_10", name: "img_10.jpg", url: "https://picsum.photos/seed/022_10/800/1200" },  // ← REPLACE URL for 022.zip image 10
+      { id: "z022_11", name: "img_11.jpg", url: "https://picsum.photos/seed/022_11/800/1200" },  // ← REPLACE URL for 022.zip image 11
+      { id: "z022_12", name: "img_12.jpg", url: "https://picsum.photos/seed/022_12/800/1200" },  // ← REPLACE URL for 022.zip image 12
+      { id: "z022_13", name: "img_13.jpg", url: "https://picsum.photos/seed/022_13/800/1200" },  // ← REPLACE URL for 022.zip image 13
+      { id: "z022_14", name: "img_14.jpg", url: "https://picsum.photos/seed/022_14/800/1200" },  // ← REPLACE URL for 022.zip image 14
+      { id: "z022_15", name: "img_15.jpg", url: "https://picsum.photos/seed/022_15/800/1200" },  // ← REPLACE URL for 022.zip image 15
+      { id: "z022_16", name: "img_16.jpg", url: "https://picsum.photos/seed/022_16/800/1200" },  // ← REPLACE URL for 022.zip image 16
+      { id: "z022_17", name: "img_17.jpg", url: "https://picsum.photos/seed/022_17/800/1200" },  // ← REPLACE URL for 022.zip image 17
+      { id: "z022_18", name: "img_18.jpg", url: "https://picsum.photos/seed/022_18/800/1200" },  // ← REPLACE URL for 022.zip image 18
+      { id: "z022_19", name: "img_19.jpg", url: "https://picsum.photos/seed/022_19/800/1200" },  // ← REPLACE URL for 022.zip image 19
+      { id: "z022_20", name: "img_20.jpg", url: "https://picsum.photos/seed/022_20/800/1200" }  // ← REPLACE URL for 022.zip image 20
+    ]
+  },
+  "z023": {
+    id: "z023", name: "023.zip", type: "zip",
+    images: [
+      { id: "z023_1", name: "img_01.jpg", url: "https://picsum.photos/seed/023_01/800/1200" },  // ← REPLACE URL for 023.zip image 01
+      { id: "z023_2", name: "img_02.jpg", url: "https://picsum.photos/seed/023_02/800/1200" },  // ← REPLACE URL for 023.zip image 02
+      { id: "z023_3", name: "img_03.jpg", url: "https://picsum.photos/seed/023_03/800/1200" },  // ← REPLACE URL for 023.zip image 03
+      { id: "z023_4", name: "img_04.jpg", url: "https://picsum.photos/seed/023_04/800/1200" },  // ← REPLACE URL for 023.zip image 04
+      { id: "z023_5", name: "img_05.jpg", url: "https://picsum.photos/seed/023_05/800/1200" },  // ← REPLACE URL for 023.zip image 05
+      { id: "z023_6", name: "img_06.jpg", url: "https://picsum.photos/seed/023_06/800/1200" },  // ← REPLACE URL for 023.zip image 06
+      { id: "z023_7", name: "img_07.jpg", url: "https://picsum.photos/seed/023_07/800/1200" },  // ← REPLACE URL for 023.zip image 07
+      { id: "z023_8", name: "img_08.jpg", url: "https://picsum.photos/seed/023_08/800/1200" },  // ← REPLACE URL for 023.zip image 08
+      { id: "z023_9", name: "img_09.jpg", url: "https://picsum.photos/seed/023_09/800/1200" },  // ← REPLACE URL for 023.zip image 09
+      { id: "z023_10", name: "img_10.jpg", url: "https://picsum.photos/seed/023_10/800/1200" },  // ← REPLACE URL for 023.zip image 10
+      { id: "z023_11", name: "img_11.jpg", url: "https://picsum.photos/seed/023_11/800/1200" },  // ← REPLACE URL for 023.zip image 11
+      { id: "z023_12", name: "img_12.jpg", url: "https://picsum.photos/seed/023_12/800/1200" },  // ← REPLACE URL for 023.zip image 12
+      { id: "z023_13", name: "img_13.jpg", url: "https://picsum.photos/seed/023_13/800/1200" },  // ← REPLACE URL for 023.zip image 13
+      { id: "z023_14", name: "img_14.jpg", url: "https://picsum.photos/seed/023_14/800/1200" },  // ← REPLACE URL for 023.zip image 14
+      { id: "z023_15", name: "img_15.jpg", url: "https://picsum.photos/seed/023_15/800/1200" },  // ← REPLACE URL for 023.zip image 15
+      { id: "z023_16", name: "img_16.jpg", url: "https://picsum.photos/seed/023_16/800/1200" },  // ← REPLACE URL for 023.zip image 16
+      { id: "z023_17", name: "img_17.jpg", url: "https://picsum.photos/seed/023_17/800/1200" },  // ← REPLACE URL for 023.zip image 17
+      { id: "z023_18", name: "img_18.jpg", url: "https://picsum.photos/seed/023_18/800/1200" },  // ← REPLACE URL for 023.zip image 18
+      { id: "z023_19", name: "img_19.jpg", url: "https://picsum.photos/seed/023_19/800/1200" },  // ← REPLACE URL for 023.zip image 19
+      { id: "z023_20", name: "img_20.jpg", url: "https://picsum.photos/seed/023_20/800/1200" }  // ← REPLACE URL for 023.zip image 20
+    ]
+  },
+  "z024": {
+    id: "z024", name: "024.zip", type: "zip",
+    images: [
+      { id: "z024_1", name: "img_01.jpg", url: "https://picsum.photos/seed/024_01/800/1200" },  // ← REPLACE URL for 024.zip image 01
+      { id: "z024_2", name: "img_02.jpg", url: "https://picsum.photos/seed/024_02/800/1200" },  // ← REPLACE URL for 024.zip image 02
+      { id: "z024_3", name: "img_03.jpg", url: "https://picsum.photos/seed/024_03/800/1200" },  // ← REPLACE URL for 024.zip image 03
+      { id: "z024_4", name: "img_04.jpg", url: "https://picsum.photos/seed/024_04/800/1200" },  // ← REPLACE URL for 024.zip image 04
+      { id: "z024_5", name: "img_05.jpg", url: "https://picsum.photos/seed/024_05/800/1200" },  // ← REPLACE URL for 024.zip image 05
+      { id: "z024_6", name: "img_06.jpg", url: "https://picsum.photos/seed/024_06/800/1200" },  // ← REPLACE URL for 024.zip image 06
+      { id: "z024_7", name: "img_07.jpg", url: "https://picsum.photos/seed/024_07/800/1200" },  // ← REPLACE URL for 024.zip image 07
+      { id: "z024_8", name: "img_08.jpg", url: "https://picsum.photos/seed/024_08/800/1200" },  // ← REPLACE URL for 024.zip image 08
+      { id: "z024_9", name: "img_09.jpg", url: "https://picsum.photos/seed/024_09/800/1200" },  // ← REPLACE URL for 024.zip image 09
+      { id: "z024_10", name: "img_10.jpg", url: "https://picsum.photos/seed/024_10/800/1200" },  // ← REPLACE URL for 024.zip image 10
+      { id: "z024_11", name: "img_11.jpg", url: "https://picsum.photos/seed/024_11/800/1200" },  // ← REPLACE URL for 024.zip image 11
+      { id: "z024_12", name: "img_12.jpg", url: "https://picsum.photos/seed/024_12/800/1200" },  // ← REPLACE URL for 024.zip image 12
+      { id: "z024_13", name: "img_13.jpg", url: "https://picsum.photos/seed/024_13/800/1200" },  // ← REPLACE URL for 024.zip image 13
+      { id: "z024_14", name: "img_14.jpg", url: "https://picsum.photos/seed/024_14/800/1200" },  // ← REPLACE URL for 024.zip image 14
+      { id: "z024_15", name: "img_15.jpg", url: "https://picsum.photos/seed/024_15/800/1200" },  // ← REPLACE URL for 024.zip image 15
+      { id: "z024_16", name: "img_16.jpg", url: "https://picsum.photos/seed/024_16/800/1200" },  // ← REPLACE URL for 024.zip image 16
+      { id: "z024_17", name: "img_17.jpg", url: "https://picsum.photos/seed/024_17/800/1200" },  // ← REPLACE URL for 024.zip image 17
+      { id: "z024_18", name: "img_18.jpg", url: "https://picsum.photos/seed/024_18/800/1200" },  // ← REPLACE URL for 024.zip image 18
+      { id: "z024_19", name: "img_19.jpg", url: "https://picsum.photos/seed/024_19/800/1200" },  // ← REPLACE URL for 024.zip image 19
+      { id: "z024_20", name: "img_20.jpg", url: "https://picsum.photos/seed/024_20/800/1200" }  // ← REPLACE URL for 024.zip image 20
+    ]
+  },
+  "z025": {
+    id: "z025", name: "025.zip", type: "zip",
+    images: [
+      { id: "z025_1", name: "img_01.jpg", url: "https://picsum.photos/seed/025_01/800/1200" },  // ← REPLACE URL for 025.zip image 01
+      { id: "z025_2", name: "img_02.jpg", url: "https://picsum.photos/seed/025_02/800/1200" },  // ← REPLACE URL for 025.zip image 02
+      { id: "z025_3", name: "img_03.jpg", url: "https://picsum.photos/seed/025_03/800/1200" },  // ← REPLACE URL for 025.zip image 03
+      { id: "z025_4", name: "img_04.jpg", url: "https://picsum.photos/seed/025_04/800/1200" },  // ← REPLACE URL for 025.zip image 04
+      { id: "z025_5", name: "img_05.jpg", url: "https://picsum.photos/seed/025_05/800/1200" },  // ← REPLACE URL for 025.zip image 05
+      { id: "z025_6", name: "img_06.jpg", url: "https://picsum.photos/seed/025_06/800/1200" },  // ← REPLACE URL for 025.zip image 06
+      { id: "z025_7", name: "img_07.jpg", url: "https://picsum.photos/seed/025_07/800/1200" },  // ← REPLACE URL for 025.zip image 07
+      { id: "z025_8", name: "img_08.jpg", url: "https://picsum.photos/seed/025_08/800/1200" },  // ← REPLACE URL for 025.zip image 08
+      { id: "z025_9", name: "img_09.jpg", url: "https://picsum.photos/seed/025_09/800/1200" },  // ← REPLACE URL for 025.zip image 09
+      { id: "z025_10", name: "img_10.jpg", url: "https://picsum.photos/seed/025_10/800/1200" },  // ← REPLACE URL for 025.zip image 10
+      { id: "z025_11", name: "img_11.jpg", url: "https://picsum.photos/seed/025_11/800/1200" },  // ← REPLACE URL for 025.zip image 11
+      { id: "z025_12", name: "img_12.jpg", url: "https://picsum.photos/seed/025_12/800/1200" },  // ← REPLACE URL for 025.zip image 12
+      { id: "z025_13", name: "img_13.jpg", url: "https://picsum.photos/seed/025_13/800/1200" },  // ← REPLACE URL for 025.zip image 13
+      { id: "z025_14", name: "img_14.jpg", url: "https://picsum.photos/seed/025_14/800/1200" },  // ← REPLACE URL for 025.zip image 14
+      { id: "z025_15", name: "img_15.jpg", url: "https://picsum.photos/seed/025_15/800/1200" },  // ← REPLACE URL for 025.zip image 15
+      { id: "z025_16", name: "img_16.jpg", url: "https://picsum.photos/seed/025_16/800/1200" },  // ← REPLACE URL for 025.zip image 16
+      { id: "z025_17", name: "img_17.jpg", url: "https://picsum.photos/seed/025_17/800/1200" },  // ← REPLACE URL for 025.zip image 17
+      { id: "z025_18", name: "img_18.jpg", url: "https://picsum.photos/seed/025_18/800/1200" },  // ← REPLACE URL for 025.zip image 18
+      { id: "z025_19", name: "img_19.jpg", url: "https://picsum.photos/seed/025_19/800/1200" },  // ← REPLACE URL for 025.zip image 19
+      { id: "z025_20", name: "img_20.jpg", url: "https://picsum.photos/seed/025_20/800/1200" }  // ← REPLACE URL for 025.zip image 20
+    ]
+  },
+  "z026": {
+    id: "z026", name: "026.zip", type: "zip",
+    images: [
+      { id: "z026_1", name: "img_01.jpg", url: "https://picsum.photos/seed/026_01/800/1200" },  // ← REPLACE URL for 026.zip image 01
+      { id: "z026_2", name: "img_02.jpg", url: "https://picsum.photos/seed/026_02/800/1200" },  // ← REPLACE URL for 026.zip image 02
+      { id: "z026_3", name: "img_03.jpg", url: "https://picsum.photos/seed/026_03/800/1200" },  // ← REPLACE URL for 026.zip image 03
+      { id: "z026_4", name: "img_04.jpg", url: "https://picsum.photos/seed/026_04/800/1200" },  // ← REPLACE URL for 026.zip image 04
+      { id: "z026_5", name: "img_05.jpg", url: "https://picsum.photos/seed/026_05/800/1200" },  // ← REPLACE URL for 026.zip image 05
+      { id: "z026_6", name: "img_06.jpg", url: "https://picsum.photos/seed/026_06/800/1200" },  // ← REPLACE URL for 026.zip image 06
+      { id: "z026_7", name: "img_07.jpg", url: "https://picsum.photos/seed/026_07/800/1200" },  // ← REPLACE URL for 026.zip image 07
+      { id: "z026_8", name: "img_08.jpg", url: "https://picsum.photos/seed/026_08/800/1200" },  // ← REPLACE URL for 026.zip image 08
+      { id: "z026_9", name: "img_09.jpg", url: "https://picsum.photos/seed/026_09/800/1200" },  // ← REPLACE URL for 026.zip image 09
+      { id: "z026_10", name: "img_10.jpg", url: "https://picsum.photos/seed/026_10/800/1200" },  // ← REPLACE URL for 026.zip image 10
+      { id: "z026_11", name: "img_11.jpg", url: "https://picsum.photos/seed/026_11/800/1200" },  // ← REPLACE URL for 026.zip image 11
+      { id: "z026_12", name: "img_12.jpg", url: "https://picsum.photos/seed/026_12/800/1200" },  // ← REPLACE URL for 026.zip image 12
+      { id: "z026_13", name: "img_13.jpg", url: "https://picsum.photos/seed/026_13/800/1200" },  // ← REPLACE URL for 026.zip image 13
+      { id: "z026_14", name: "img_14.jpg", url: "https://picsum.photos/seed/026_14/800/1200" },  // ← REPLACE URL for 026.zip image 14
+      { id: "z026_15", name: "img_15.jpg", url: "https://picsum.photos/seed/026_15/800/1200" },  // ← REPLACE URL for 026.zip image 15
+      { id: "z026_16", name: "img_16.jpg", url: "https://picsum.photos/seed/026_16/800/1200" },  // ← REPLACE URL for 026.zip image 16
+      { id: "z026_17", name: "img_17.jpg", url: "https://picsum.photos/seed/026_17/800/1200" },  // ← REPLACE URL for 026.zip image 17
+      { id: "z026_18", name: "img_18.jpg", url: "https://picsum.photos/seed/026_18/800/1200" },  // ← REPLACE URL for 026.zip image 18
+      { id: "z026_19", name: "img_19.jpg", url: "https://picsum.photos/seed/026_19/800/1200" },  // ← REPLACE URL for 026.zip image 19
+      { id: "z026_20", name: "img_20.jpg", url: "https://picsum.photos/seed/026_20/800/1200" }  // ← REPLACE URL for 026.zip image 20
+    ]
+  },
+  "z027": {
+    id: "z027", name: "027.zip", type: "zip",
+    images: [
+      { id: "z027_1", name: "img_01.jpg", url: "https://picsum.photos/seed/027_01/800/1200" },  // ← REPLACE URL for 027.zip image 01
+      { id: "z027_2", name: "img_02.jpg", url: "https://picsum.photos/seed/027_02/800/1200" },  // ← REPLACE URL for 027.zip image 02
+      { id: "z027_3", name: "img_03.jpg", url: "https://picsum.photos/seed/027_03/800/1200" },  // ← REPLACE URL for 027.zip image 03
+      { id: "z027_4", name: "img_04.jpg", url: "https://picsum.photos/seed/027_04/800/1200" },  // ← REPLACE URL for 027.zip image 04
+      { id: "z027_5", name: "img_05.jpg", url: "https://picsum.photos/seed/027_05/800/1200" },  // ← REPLACE URL for 027.zip image 05
+      { id: "z027_6", name: "img_06.jpg", url: "https://picsum.photos/seed/027_06/800/1200" },  // ← REPLACE URL for 027.zip image 06
+      { id: "z027_7", name: "img_07.jpg", url: "https://picsum.photos/seed/027_07/800/1200" },  // ← REPLACE URL for 027.zip image 07
+      { id: "z027_8", name: "img_08.jpg", url: "https://picsum.photos/seed/027_08/800/1200" },  // ← REPLACE URL for 027.zip image 08
+      { id: "z027_9", name: "img_09.jpg", url: "https://picsum.photos/seed/027_09/800/1200" },  // ← REPLACE URL for 027.zip image 09
+      { id: "z027_10", name: "img_10.jpg", url: "https://picsum.photos/seed/027_10/800/1200" },  // ← REPLACE URL for 027.zip image 10
+      { id: "z027_11", name: "img_11.jpg", url: "https://picsum.photos/seed/027_11/800/1200" },  // ← REPLACE URL for 027.zip image 11
+      { id: "z027_12", name: "img_12.jpg", url: "https://picsum.photos/seed/027_12/800/1200" },  // ← REPLACE URL for 027.zip image 12
+      { id: "z027_13", name: "img_13.jpg", url: "https://picsum.photos/seed/027_13/800/1200" },  // ← REPLACE URL for 027.zip image 13
+      { id: "z027_14", name: "img_14.jpg", url: "https://picsum.photos/seed/027_14/800/1200" },  // ← REPLACE URL for 027.zip image 14
+      { id: "z027_15", name: "img_15.jpg", url: "https://picsum.photos/seed/027_15/800/1200" },  // ← REPLACE URL for 027.zip image 15
+      { id: "z027_16", name: "img_16.jpg", url: "https://picsum.photos/seed/027_16/800/1200" },  // ← REPLACE URL for 027.zip image 16
+      { id: "z027_17", name: "img_17.jpg", url: "https://picsum.photos/seed/027_17/800/1200" },  // ← REPLACE URL for 027.zip image 17
+      { id: "z027_18", name: "img_18.jpg", url: "https://picsum.photos/seed/027_18/800/1200" },  // ← REPLACE URL for 027.zip image 18
+      { id: "z027_19", name: "img_19.jpg", url: "https://picsum.photos/seed/027_19/800/1200" },  // ← REPLACE URL for 027.zip image 19
+      { id: "z027_20", name: "img_20.jpg", url: "https://picsum.photos/seed/027_20/800/1200" }  // ← REPLACE URL for 027.zip image 20
+    ]
+  },
+  "z028": {
+    id: "z028", name: "028.zip", type: "zip",
+    images: [
+      { id: "z028_1", name: "img_01.jpg", url: "https://picsum.photos/seed/028_01/800/1200" },  // ← REPLACE URL for 028.zip image 01
+      { id: "z028_2", name: "img_02.jpg", url: "https://picsum.photos/seed/028_02/800/1200" },  // ← REPLACE URL for 028.zip image 02
+      { id: "z028_3", name: "img_03.jpg", url: "https://picsum.photos/seed/028_03/800/1200" },  // ← REPLACE URL for 028.zip image 03
+      { id: "z028_4", name: "img_04.jpg", url: "https://picsum.photos/seed/028_04/800/1200" },  // ← REPLACE URL for 028.zip image 04
+      { id: "z028_5", name: "img_05.jpg", url: "https://picsum.photos/seed/028_05/800/1200" },  // ← REPLACE URL for 028.zip image 05
+      { id: "z028_6", name: "img_06.jpg", url: "https://picsum.photos/seed/028_06/800/1200" },  // ← REPLACE URL for 028.zip image 06
+      { id: "z028_7", name: "img_07.jpg", url: "https://picsum.photos/seed/028_07/800/1200" },  // ← REPLACE URL for 028.zip image 07
+      { id: "z028_8", name: "img_08.jpg", url: "https://picsum.photos/seed/028_08/800/1200" },  // ← REPLACE URL for 028.zip image 08
+      { id: "z028_9", name: "img_09.jpg", url: "https://picsum.photos/seed/028_09/800/1200" },  // ← REPLACE URL for 028.zip image 09
+      { id: "z028_10", name: "img_10.jpg", url: "https://picsum.photos/seed/028_10/800/1200" },  // ← REPLACE URL for 028.zip image 10
+      { id: "z028_11", name: "img_11.jpg", url: "https://picsum.photos/seed/028_11/800/1200" },  // ← REPLACE URL for 028.zip image 11
+      { id: "z028_12", name: "img_12.jpg", url: "https://picsum.photos/seed/028_12/800/1200" },  // ← REPLACE URL for 028.zip image 12
+      { id: "z028_13", name: "img_13.jpg", url: "https://picsum.photos/seed/028_13/800/1200" },  // ← REPLACE URL for 028.zip image 13
+      { id: "z028_14", name: "img_14.jpg", url: "https://picsum.photos/seed/028_14/800/1200" },  // ← REPLACE URL for 028.zip image 14
+      { id: "z028_15", name: "img_15.jpg", url: "https://picsum.photos/seed/028_15/800/1200" },  // ← REPLACE URL for 028.zip image 15
+      { id: "z028_16", name: "img_16.jpg", url: "https://picsum.photos/seed/028_16/800/1200" },  // ← REPLACE URL for 028.zip image 16
+      { id: "z028_17", name: "img_17.jpg", url: "https://picsum.photos/seed/028_17/800/1200" },  // ← REPLACE URL for 028.zip image 17
+      { id: "z028_18", name: "img_18.jpg", url: "https://picsum.photos/seed/028_18/800/1200" },  // ← REPLACE URL for 028.zip image 18
+      { id: "z028_19", name: "img_19.jpg", url: "https://picsum.photos/seed/028_19/800/1200" },  // ← REPLACE URL for 028.zip image 19
+      { id: "z028_20", name: "img_20.jpg", url: "https://picsum.photos/seed/028_20/800/1200" }  // ← REPLACE URL for 028.zip image 20
+    ]
+  },
+  "z029": {
+    id: "z029", name: "029.zip", type: "zip",
+    images: [
+      { id: "z029_1", name: "img_01.jpg", url: "https://picsum.photos/seed/029_01/800/1200" },  // ← REPLACE URL for 029.zip image 01
+      { id: "z029_2", name: "img_02.jpg", url: "https://picsum.photos/seed/029_02/800/1200" },  // ← REPLACE URL for 029.zip image 02
+      { id: "z029_3", name: "img_03.jpg", url: "https://picsum.photos/seed/029_03/800/1200" },  // ← REPLACE URL for 029.zip image 03
+      { id: "z029_4", name: "img_04.jpg", url: "https://picsum.photos/seed/029_04/800/1200" },  // ← REPLACE URL for 029.zip image 04
+      { id: "z029_5", name: "img_05.jpg", url: "https://picsum.photos/seed/029_05/800/1200" },  // ← REPLACE URL for 029.zip image 05
+      { id: "z029_6", name: "img_06.jpg", url: "https://picsum.photos/seed/029_06/800/1200" },  // ← REPLACE URL for 029.zip image 06
+      { id: "z029_7", name: "img_07.jpg", url: "https://picsum.photos/seed/029_07/800/1200" },  // ← REPLACE URL for 029.zip image 07
+      { id: "z029_8", name: "img_08.jpg", url: "https://picsum.photos/seed/029_08/800/1200" },  // ← REPLACE URL for 029.zip image 08
+      { id: "z029_9", name: "img_09.jpg", url: "https://picsum.photos/seed/029_09/800/1200" },  // ← REPLACE URL for 029.zip image 09
+      { id: "z029_10", name: "img_10.jpg", url: "https://picsum.photos/seed/029_10/800/1200" },  // ← REPLACE URL for 029.zip image 10
+      { id: "z029_11", name: "img_11.jpg", url: "https://picsum.photos/seed/029_11/800/1200" },  // ← REPLACE URL for 029.zip image 11
+      { id: "z029_12", name: "img_12.jpg", url: "https://picsum.photos/seed/029_12/800/1200" },  // ← REPLACE URL for 029.zip image 12
+      { id: "z029_13", name: "img_13.jpg", url: "https://picsum.photos/seed/029_13/800/1200" },  // ← REPLACE URL for 029.zip image 13
+      { id: "z029_14", name: "img_14.jpg", url: "https://picsum.photos/seed/029_14/800/1200" },  // ← REPLACE URL for 029.zip image 14
+      { id: "z029_15", name: "img_15.jpg", url: "https://picsum.photos/seed/029_15/800/1200" },  // ← REPLACE URL for 029.zip image 15
+      { id: "z029_16", name: "img_16.jpg", url: "https://picsum.photos/seed/029_16/800/1200" },  // ← REPLACE URL for 029.zip image 16
+      { id: "z029_17", name: "img_17.jpg", url: "https://picsum.photos/seed/029_17/800/1200" },  // ← REPLACE URL for 029.zip image 17
+      { id: "z029_18", name: "img_18.jpg", url: "https://picsum.photos/seed/029_18/800/1200" },  // ← REPLACE URL for 029.zip image 18
+      { id: "z029_19", name: "img_19.jpg", url: "https://picsum.photos/seed/029_19/800/1200" },  // ← REPLACE URL for 029.zip image 19
+      { id: "z029_20", name: "img_20.jpg", url: "https://picsum.photos/seed/029_20/800/1200" }  // ← REPLACE URL for 029.zip image 20
+    ]
+  },
+  "z030": {
+    id: "z030", name: "030.zip", type: "zip",
+    images: [
+      { id: "z030_1", name: "img_01.jpg", url: "https://picsum.photos/seed/030_01/800/1200" },  // ← REPLACE URL for 030.zip image 01
+      { id: "z030_2", name: "img_02.jpg", url: "https://picsum.photos/seed/030_02/800/1200" },  // ← REPLACE URL for 030.zip image 02
+      { id: "z030_3", name: "img_03.jpg", url: "https://picsum.photos/seed/030_03/800/1200" },  // ← REPLACE URL for 030.zip image 03
+      { id: "z030_4", name: "img_04.jpg", url: "https://picsum.photos/seed/030_04/800/1200" },  // ← REPLACE URL for 030.zip image 04
+      { id: "z030_5", name: "img_05.jpg", url: "https://picsum.photos/seed/030_05/800/1200" },  // ← REPLACE URL for 030.zip image 05
+      { id: "z030_6", name: "img_06.jpg", url: "https://picsum.photos/seed/030_06/800/1200" },  // ← REPLACE URL for 030.zip image 06
+      { id: "z030_7", name: "img_07.jpg", url: "https://picsum.photos/seed/030_07/800/1200" },  // ← REPLACE URL for 030.zip image 07
+      { id: "z030_8", name: "img_08.jpg", url: "https://picsum.photos/seed/030_08/800/1200" },  // ← REPLACE URL for 030.zip image 08
+      { id: "z030_9", name: "img_09.jpg", url: "https://picsum.photos/seed/030_09/800/1200" },  // ← REPLACE URL for 030.zip image 09
+      { id: "z030_10", name: "img_10.jpg", url: "https://picsum.photos/seed/030_10/800/1200" },  // ← REPLACE URL for 030.zip image 10
+      { id: "z030_11", name: "img_11.jpg", url: "https://picsum.photos/seed/030_11/800/1200" },  // ← REPLACE URL for 030.zip image 11
+      { id: "z030_12", name: "img_12.jpg", url: "https://picsum.photos/seed/030_12/800/1200" },  // ← REPLACE URL for 030.zip image 12
+      { id: "z030_13", name: "img_13.jpg", url: "https://picsum.photos/seed/030_13/800/1200" },  // ← REPLACE URL for 030.zip image 13
+      { id: "z030_14", name: "img_14.jpg", url: "https://picsum.photos/seed/030_14/800/1200" },  // ← REPLACE URL for 030.zip image 14
+      { id: "z030_15", name: "img_15.jpg", url: "https://picsum.photos/seed/030_15/800/1200" },  // ← REPLACE URL for 030.zip image 15
+      { id: "z030_16", name: "img_16.jpg", url: "https://picsum.photos/seed/030_16/800/1200" },  // ← REPLACE URL for 030.zip image 16
+      { id: "z030_17", name: "img_17.jpg", url: "https://picsum.photos/seed/030_17/800/1200" },  // ← REPLACE URL for 030.zip image 17
+      { id: "z030_18", name: "img_18.jpg", url: "https://picsum.photos/seed/030_18/800/1200" },  // ← REPLACE URL for 030.zip image 18
+      { id: "z030_19", name: "img_19.jpg", url: "https://picsum.photos/seed/030_19/800/1200" },  // ← REPLACE URL for 030.zip image 19
+      { id: "z030_20", name: "img_20.jpg", url: "https://picsum.photos/seed/030_20/800/1200" }  // ← REPLACE URL for 030.zip image 20
+    ]
+  },
+  "z031": {
+    id: "z031", name: "031.zip", type: "zip",
+    images: [
+      { id: "z031_1", name: "img_01.jpg", url: "https://picsum.photos/seed/031_01/800/1200" },  // ← REPLACE URL for 031.zip image 01
+      { id: "z031_2", name: "img_02.jpg", url: "https://picsum.photos/seed/031_02/800/1200" },  // ← REPLACE URL for 031.zip image 02
+      { id: "z031_3", name: "img_03.jpg", url: "https://picsum.photos/seed/031_03/800/1200" },  // ← REPLACE URL for 031.zip image 03
+      { id: "z031_4", name: "img_04.jpg", url: "https://picsum.photos/seed/031_04/800/1200" },  // ← REPLACE URL for 031.zip image 04
+      { id: "z031_5", name: "img_05.jpg", url: "https://picsum.photos/seed/031_05/800/1200" },  // ← REPLACE URL for 031.zip image 05
+      { id: "z031_6", name: "img_06.jpg", url: "https://picsum.photos/seed/031_06/800/1200" },  // ← REPLACE URL for 031.zip image 06
+      { id: "z031_7", name: "img_07.jpg", url: "https://picsum.photos/seed/031_07/800/1200" },  // ← REPLACE URL for 031.zip image 07
+      { id: "z031_8", name: "img_08.jpg", url: "https://picsum.photos/seed/031_08/800/1200" },  // ← REPLACE URL for 031.zip image 08
+      { id: "z031_9", name: "img_09.jpg", url: "https://picsum.photos/seed/031_09/800/1200" },  // ← REPLACE URL for 031.zip image 09
+      { id: "z031_10", name: "img_10.jpg", url: "https://picsum.photos/seed/031_10/800/1200" },  // ← REPLACE URL for 031.zip image 10
+      { id: "z031_11", name: "img_11.jpg", url: "https://picsum.photos/seed/031_11/800/1200" },  // ← REPLACE URL for 031.zip image 11
+      { id: "z031_12", name: "img_12.jpg", url: "https://picsum.photos/seed/031_12/800/1200" },  // ← REPLACE URL for 031.zip image 12
+      { id: "z031_13", name: "img_13.jpg", url: "https://picsum.photos/seed/031_13/800/1200" },  // ← REPLACE URL for 031.zip image 13
+      { id: "z031_14", name: "img_14.jpg", url: "https://picsum.photos/seed/031_14/800/1200" },  // ← REPLACE URL for 031.zip image 14
+      { id: "z031_15", name: "img_15.jpg", url: "https://picsum.photos/seed/031_15/800/1200" },  // ← REPLACE URL for 031.zip image 15
+      { id: "z031_16", name: "img_16.jpg", url: "https://picsum.photos/seed/031_16/800/1200" },  // ← REPLACE URL for 031.zip image 16
+      { id: "z031_17", name: "img_17.jpg", url: "https://picsum.photos/seed/031_17/800/1200" },  // ← REPLACE URL for 031.zip image 17
+      { id: "z031_18", name: "img_18.jpg", url: "https://picsum.photos/seed/031_18/800/1200" },  // ← REPLACE URL for 031.zip image 18
+      { id: "z031_19", name: "img_19.jpg", url: "https://picsum.photos/seed/031_19/800/1200" },  // ← REPLACE URL for 031.zip image 19
+      { id: "z031_20", name: "img_20.jpg", url: "https://picsum.photos/seed/031_20/800/1200" }  // ← REPLACE URL for 031.zip image 20
+    ]
+  },
+  "z032": {
+    id: "z032", name: "032.zip", type: "zip",
+    images: [
+      { id: "z032_1", name: "img_01.jpg", url: "https://picsum.photos/seed/032_01/800/1200" },  // ← REPLACE URL for 032.zip image 01
+      { id: "z032_2", name: "img_02.jpg", url: "https://picsum.photos/seed/032_02/800/1200" },  // ← REPLACE URL for 032.zip image 02
+      { id: "z032_3", name: "img_03.jpg", url: "https://picsum.photos/seed/032_03/800/1200" },  // ← REPLACE URL for 032.zip image 03
+      { id: "z032_4", name: "img_04.jpg", url: "https://picsum.photos/seed/032_04/800/1200" },  // ← REPLACE URL for 032.zip image 04
+      { id: "z032_5", name: "img_05.jpg", url: "https://picsum.photos/seed/032_05/800/1200" },  // ← REPLACE URL for 032.zip image 05
+      { id: "z032_6", name: "img_06.jpg", url: "https://picsum.photos/seed/032_06/800/1200" },  // ← REPLACE URL for 032.zip image 06
+      { id: "z032_7", name: "img_07.jpg", url: "https://picsum.photos/seed/032_07/800/1200" },  // ← REPLACE URL for 032.zip image 07
+      { id: "z032_8", name: "img_08.jpg", url: "https://picsum.photos/seed/032_08/800/1200" },  // ← REPLACE URL for 032.zip image 08
+      { id: "z032_9", name: "img_09.jpg", url: "https://picsum.photos/seed/032_09/800/1200" },  // ← REPLACE URL for 032.zip image 09
+      { id: "z032_10", name: "img_10.jpg", url: "https://picsum.photos/seed/032_10/800/1200" },  // ← REPLACE URL for 032.zip image 10
+      { id: "z032_11", name: "img_11.jpg", url: "https://picsum.photos/seed/032_11/800/1200" },  // ← REPLACE URL for 032.zip image 11
+      { id: "z032_12", name: "img_12.jpg", url: "https://picsum.photos/seed/032_12/800/1200" },  // ← REPLACE URL for 032.zip image 12
+      { id: "z032_13", name: "img_13.jpg", url: "https://picsum.photos/seed/032_13/800/1200" },  // ← REPLACE URL for 032.zip image 13
+      { id: "z032_14", name: "img_14.jpg", url: "https://picsum.photos/seed/032_14/800/1200" },  // ← REPLACE URL for 032.zip image 14
+      { id: "z032_15", name: "img_15.jpg", url: "https://picsum.photos/seed/032_15/800/1200" },  // ← REPLACE URL for 032.zip image 15
+      { id: "z032_16", name: "img_16.jpg", url: "https://picsum.photos/seed/032_16/800/1200" },  // ← REPLACE URL for 032.zip image 16
+      { id: "z032_17", name: "img_17.jpg", url: "https://picsum.photos/seed/032_17/800/1200" },  // ← REPLACE URL for 032.zip image 17
+      { id: "z032_18", name: "img_18.jpg", url: "https://picsum.photos/seed/032_18/800/1200" },  // ← REPLACE URL for 032.zip image 18
+      { id: "z032_19", name: "img_19.jpg", url: "https://picsum.photos/seed/032_19/800/1200" },  // ← REPLACE URL for 032.zip image 19
+      { id: "z032_20", name: "img_20.jpg", url: "https://picsum.photos/seed/032_20/800/1200" }  // ← REPLACE URL for 032.zip image 20
+    ]
   }
-  return {
-    id: 'z' + s,
-    name: s + '.zip',
-    type: 'zip',
-    images: imgs
-  };
+
+};
+
+// Helper to get a zip by number
+function getZip(num) {
+  var s = num < 10 ? '00' + num : '0' + num;
+  return allZips['z' + s];
 }
 
 function makeGroup(id, name, nums) {
-  return { id: id, name: name, type: 'group', children: nums.map(makeZip) };
+  return { id: id, name: name, type: 'group', children: nums.map(getZip) };
 }
 
-var CATEGORIES = [
-  {
-    id: 'friendsandfamily',
-    name: 'friendsandfamily.zip',
-    items: [
-      makeGroup('outside', 'outside.zip', [1, 2, 4, 5, 6, 7, 8, 10, 11, 15, 16, 23, 30]),
-      makeGroup('gatherings', 'gatherings.zip', [3, 9, 17, 18, 24, 25])
-    ]
-  },
-  {
-    id: 'travel',
-    name: 'travel.zip',
-    items: [
-      makeGroup('cali25', 'cali25.zip', [12, 13, 14]),
-      makeGroup('nyc25', 'nyc25.zip', [18, 19, 20, 21, 22]),
-      makeGroup('chicago25', 'chicago25.zip', [31, 32])
-    ]
-  },
-  {
-    id: 'outandabout',
-    name: 'outandabout.zip',
-    items: [
-      makeGroup('soccercharitymatch', 'soccercharitymatch.zip', [26, 27, 28, 29])
-    ]
-  }
+var DESKTOP_GROUPS = [
+  makeGroup('outside', 'outside.zip', [1, 2, 4, 5, 6, 7, 8, 10, 11, 15, 16, 23, 30]),
+  makeGroup('gatherings', 'gatherings.zip', [3, 9, 17, 18, 24, 25]),
+  makeGroup('cali25', 'cali25.zip', [12, 13, 14]),
+  makeGroup('nyc25', 'nyc25.zip', [18, 19, 20, 21, 22]),
+  makeGroup('chicago25', 'chicago25.zip', [31, 32]),
+  makeGroup('soccercharitymatch', 'soccercharitymatch.zip', [26, 27, 28, 29])
 ];
 
 // =====================================================
-//  ENGINE
+//  ENGINE — no need to edit below
 // =====================================================
 var zCounter = 100;
 var activeWindowId = null;
@@ -352,39 +1101,32 @@ var openWindows = {};
 var viewerStates = {};
 var startOpen = false;
 var isMobile = function() { return window.innerWidth <= 768; };
-
 var folderSVG = '<svg width="40" height="40" viewBox="0 0 32 32" fill="none"><path d="M2 8H14L16 5H30V27H2V8Z" fill="#FFDE00" stroke="#808000" stroke-width="1"/><path d="M2 10H30V27H2V10Z" fill="#FFC800" stroke="#808000" stroke-width="1"/><path d="M3 11H29V26H3V11Z" fill="#FFDE00"/></svg>';
 var imageSVG = '<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" fill="white" stroke="#808080"/><rect x="6" y="6" width="20" height="16" fill="#000080"/><circle cx="12" cy="12" r="3" fill="#FFFF00"/><path d="M6 22L12 16L16 19L22 13L26 18V22H6Z" fill="#008000"/></svg>';
-
 var zipSVG = '<svg width="40" height="40" viewBox="0 0 32 32" fill="none"><rect x="6" y="3" width="20" height="26" rx="1" fill="#ffffc0" stroke="#808000"/><rect x="14" y="3" width="4" height="2" fill="#808000"/><rect x="14" y="7" width="4" height="2" fill="#808000"/><rect x="14" y="11" width="4" height="2" fill="#808000"/><rect x="14" y="15" width="4" height="2" fill="#808000"/><rect x="12" y="19" width="8" height="6" rx="1" fill="#808000"/><rect x="14" y="20" width="4" height="3" fill="#ffffc0"/></svg>';
-
 function updateClock() {
   var now = new Date();
   document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
 }
 updateClock(); setInterval(updateClock, 30000);
-
 function renderDesktop() {
   var desktop = document.getElementById('desktop');
   var html = '';
-
-  CATEGORIES.forEach(function(cat, i) {
+  DESKTOP_GROUPS.forEach(function(group, i) {
     var top = 20 + i * 80;
-    html += '<div class="desktop-icon" id="dicon-' + cat.id + '" style="left:20px;top:' + top + 'px" ' +
-      'onmousedown="startIconDrag(event, \'dicon-' + cat.id + '\', function(){openCategory(\'' + cat.id + '\')})" ' +
-      'ontouchstart="startIconDragTouch(event, \'dicon-' + cat.id + '\', function(){openCategory(\'' + cat.id + '\')})">' +
+    html += '<div class="desktop-icon" id="dicon-' + group.id + '" style="left:20px;top:' + top + 'px" ' +
+      'onmousedown="startIconDrag(event, \'dicon-' + group.id + '\', function(){openGroup(\'' + group.id + '\')})" ' +
+      'ontouchstart="startIconDragTouch(event, \'dicon-' + group.id + '\', function(){openGroup(\'' + group.id + '\')})">' +
       '<div class="icon-wrap">' + folderSVG + '</div>' +
-      '<div class="icon-label">' + cat.name + '</div></div>';
+      '<div class="icon-label">' + group.name + '</div></div>';
   });
   desktop.innerHTML = html;
 }
-
 function bringToFront(wid) {
   zCounter++; var el = document.getElementById(wid);
   if (el) el.style.zIndex = zCounter;
   activeWindowId = wid; updateTaskbar();
 }
-
 function getWindowSize(type) {
   if (isMobile()) {
     var w = window.innerWidth - 8;
@@ -397,58 +1139,18 @@ function getWindowSize(type) {
   if (type === 'viewer') return { w: 700, h: 550, x: 160 + n * 25, y: 60 + n * 25 };
   return { w: 520, h: 400, x: 120 + n * 30, y: 40 + n * 30 };
 }
-
-function openCategory(catId) {
-  var wid = 'win-cat-' + catId;
-  if (openWindows[wid]) { bringToFront(wid); return; }
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  if (!cat) return;
-  var sz = getWindowSize('folder');
-
-  var items = '';
-  cat.items.forEach(function(item) {
-    if (item.type === 'group') {
-      items += '<div class="file-item" ondblclick="openGroup(\'' + item.id + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openGroup(\'' + item.id + '\',\'' + catId + '\')">' +
-        '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + folderSVG + '</div>' +
-        '<div class="file-label">' + item.name + '</div></div>';
-    } else {
-      items += '<div class="file-item" ondblclick="openZipFromCat(\'' + item.id + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openZipFromCat(\'' + item.id + '\',\'' + catId + '\')">' +
-        '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + zipSVG + '</div>' +
-        '<div class="file-label">' + item.name + '</div></div>';
-    }
-  });
-
-  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
-    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
-    '<div class="drag-handle"></div>' + folderSVG +
-    '<span class="title-text">' + cat.name + '</span>' +
-    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
-    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
-    '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
-    '<div class="address-bar"><span>Address:</span><div class="addr-input">C:\\Photos\\' + cat.name + '</div></div>' +
-    '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
-    '<div class="status-bar">' + cat.items.length + ' item(s)</div></div>';
-
-  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
-  openWindows[wid] = { type: 'folder', name: cat.name };
-  bringToFront(wid); updateTaskbar();
-}
-
-function openGroup(groupId, catId) {
+function openGroup(groupId) {
   var wid = 'win-grp-' + groupId;
   if (openWindows[wid]) { bringToFront(wid); return; }
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  var group = cat.items.find(function(i) { return i.id === groupId; });
+  var group = DESKTOP_GROUPS.find(function(g) { return g.id === groupId; });
   if (!group) return;
   var sz = getWindowSize('folder');
-
   var items = '';
   group.children.forEach(function(zip) {
-    items += '<div class="file-item" ondblclick="openZipFromGroup(\'' + zip.id + '\',\'' + groupId + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openZipFromGroup(\'' + zip.id + '\',\'' + groupId + '\',\'' + catId + '\')">' +
+    items += '<div class="file-item" ondblclick="openZip(\'' + zip.id + '\',\'' + groupId + '\')" ontouchend="event.preventDefault();openZip(\'' + zip.id + '\',\'' + groupId + '\')">' +
       '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + zipSVG + '</div>' +
       '<div class="file-label">' + zip.name + '</div></div>';
   });
-
   var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
     '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
     '<div class="drag-handle"></div>' + folderSVG +
@@ -456,53 +1158,28 @@ function openGroup(groupId, catId) {
     '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
     '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
     '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
-    '<div class="address-bar"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px;margin-right:4px" onclick="goBack(\''+wid+'\',\'openCategory\',[\'' + catId + '\'])" ontouchend="event.preventDefault();goBack(\''+wid+'\',\'openCategory\',[\'' + catId + '\'])">◀</button><span>Address:</span><div class="addr-input">C:\\Photos\\' + cat.name + '\\' + group.name + '</div></div>' +
+    '<div class="address-bar"><span>Address:</span><div class="addr-input">C:\\Photos\\' + group.name + '</div></div>' +
     '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
     '<div class="status-bar">' + group.children.length + ' folder(s)</div></div>';
-
   document.getElementById('windows').insertAdjacentHTML('beforeend', h);
   openWindows[wid] = { type: 'folder', name: group.name };
   bringToFront(wid); updateTaskbar();
 }
-
-function openZipFromCat(zipId, catId) {
-  var wid = 'win-zip-' + zipId;
-  if (openWindows[wid]) { bringToFront(wid); return; }
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  var zip = cat.items.find(function(i) { return i.id === zipId; });
-  if (!zip) return;
-  openZipWindow(wid, zip, catId, '');
-}
-
-function openZipFromGroup(zipId, groupId, catId) {
+function openZip(zipId, groupId) {
   var wid = 'win-zip-' + zipId + '-' + groupId;
   if (openWindows[wid]) { bringToFront(wid); return; }
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  var group = cat.items.find(function(i) { return i.id === groupId; });
+  var group = DESKTOP_GROUPS.find(function(g) { return g.id === groupId; });
   var zip = group.children.find(function(z) { return z.id === zipId; });
   if (!zip) return;
-  openZipWindow(wid, zip, catId, groupId);
-}
-
-function openZipWindow(wid, zip, catId, groupId) {
   var sz = getWindowSize('folder');
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  var path = 'C:\\Photos\\' + cat.name;
-  if (groupId) {
-    var group = cat.items.find(function(i) { return i.id === groupId; });
-    path += '\\' + group.name;
-  }
-  path += '\\' + zip.name;
-
+  var path = 'C:\\Photos\\' + group.name + '\\' + zip.name;
   var items = '';
   zip.images.forEach(function(img) {
-    items += '<div class="file-item" ondblclick="openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + (groupId||'') + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + (groupId||'') + '\',\'' + catId + '\')">' +
+    items += '<div class="file-item" ondblclick="openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + groupId + '\')" ontouchend="event.preventDefault();openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + groupId + '\')">' +
       '<div class="thumb"><img src="' + img.url + '" alt="' + img.name + '" loading="lazy"></div>' +
       '<div class="file-label">' + img.name + '</div></div>';
   });
-
-  var backFn = groupId ? "goBack('" + wid + "','openGroup',['" + groupId + "','" + catId + "'])" : "goBack('" + wid + "','openCategory',['" + catId + "'])";
-
+  var backFn = "goBack('" + wid + "','openGroup',['" + groupId + "'])";
   var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
     '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
     '<div class="drag-handle"></div>' + zipSVG +
@@ -513,36 +1190,24 @@ function openZipWindow(wid, zip, catId, groupId) {
     '<div class="address-bar"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px;margin-right:4px" onclick="' + backFn + '" ontouchend="event.preventDefault();' + backFn + '">◀</button><span>Address:</span><div class="addr-input">' + path + '</div></div>' +
     '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
     '<div class="status-bar">' + zip.images.length + ' image(s)</div></div>';
-
   document.getElementById('windows').insertAdjacentHTML('beforeend', h);
   openWindows[wid] = { type: 'folder', name: zip.name };
   bringToFront(wid); updateTaskbar();
 }
-
-function findZip(zipId, catId, groupId) {
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  if (groupId) {
-    var group = cat.items.find(function(i) { return i.id === groupId; });
-    return group.children.find(function(z) { return z.id === zipId; });
-  }
-  return cat.items.find(function(i) { return i.id === zipId; });
+function findZip(zipId, groupId) {
+  var group = DESKTOP_GROUPS.find(function(g) { return g.id === groupId; });
+  return group.children.find(function(z) { return z.id === zipId; });
 }
-
-function openImageFromZip(imageId, zipId, groupId, catId) {
+function openImageFromZip(imageId, zipId, groupId) {
   var wid = 'win-img-' + imageId + '-' + zipId;
   if (openWindows[wid]) { bringToFront(wid); return; }
-  var zip = findZip(zipId, catId, groupId);
+  var zip = findZip(zipId, groupId);
   var imgIdx = zip.images.findIndex(function(img) { return img.id === imageId; });
   var image = zip.images[imgIdx];
   if (!image) return;
   var sz = getWindowSize('viewer');
-
-  viewerStates[wid] = { catId: catId, groupId: groupId, zipId: zipId, currentIdx: imgIdx };
-
-  var imgBackFn = groupId ?
-    "goBack('" + wid + "','openZipFromGroup',['" + zipId + "','" + groupId + "','" + catId + "'])" :
-    "goBack('" + wid + "','openZipFromCat',['" + zipId + "','" + catId + "'])";
-
+  viewerStates[wid] = { groupId: groupId, zipId: zipId, currentIdx: imgIdx };
+  var imgBackFn = "goBack('" + wid + "','openZip',['" + zipId + "','" + groupId + "'])";
   var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
     '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
     '<div class="drag-handle"></div>' + imageSVG +
@@ -555,15 +1220,13 @@ function openImageFromZip(imageId, zipId, groupId, catId) {
     '<button class="win-btn" onclick="navImage(\''+wid+'\',-1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',-1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="8,2 2,7 8,12" fill="black"/></svg></button>' +
     '<span class="nav-label" id="navlabel-' + wid + '">' + (imgIdx+1) + ' / ' + zip.images.length + '</span>' +
     '<button class="win-btn" onclick="navImage(\''+wid+'\',1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="6,2 12,7 6,12" fill="black"/></svg></button></div></div>';
-
   document.getElementById('windows').insertAdjacentHTML('beforeend', h);
   openWindows[wid] = { type: 'image', name: image.name };
   bringToFront(wid); updateTaskbar();
 }
-
 function navImage(wid, dir) {
   var state = viewerStates[wid]; if (!state) return;
-  var zip = findZip(state.zipId, state.catId, state.groupId);
+  var zip = findZip(state.zipId, state.groupId);
   if (!zip) return;
   var newIdx = state.currentIdx + dir;
   if (newIdx < 0) newIdx = zip.images.length - 1;
@@ -576,18 +1239,14 @@ function navImage(wid, dir) {
   openWindows[wid].name = img.name;
   updateTaskbar();
 }
-
 function goBack(currentWid, parentFn, args) {
   closeWindow(currentWid);
   window[parentFn].apply(null, args);
 }
-
 function closeWindow(wid) {
   var el = document.getElementById(wid); if (el) el.remove();
   delete openWindows[wid]; delete viewerStates[wid]; updateTaskbar();
 }
-
-// Icon dragging
 var iconDrag = null;
 function startIconDrag(e, iconId, openFn) {
   e.preventDefault(); closeStart();
@@ -630,8 +1289,6 @@ document.addEventListener('touchend', function() {
   if (!iconDrag.moved) iconDrag.openFn();
   iconDrag = null;
 });
-
-// Window dragging
 var dragState = null;
 function startDrag(e, wid) {
   if (e.target.closest('button')) return;
@@ -644,7 +1301,6 @@ document.addEventListener('mousemove', function(e) {
   if (el) { el.style.left = (e.clientX - dragState.offsetX) + 'px'; el.style.top = (e.clientY - dragState.offsetY) + 'px'; }
 });
 document.addEventListener('mouseup', function() { if (dragState && !dragState.isTouch) dragState = null; });
-
 function startDragTouch(e, wid) {
   if (e.target.closest('button')) return;
   bringToFront(wid); var touch = e.touches[0]; if (!touch) return;
@@ -665,7 +1321,6 @@ document.addEventListener('touchmove', function(e) {
   }
 }, { passive: false });
 document.addEventListener('touchend', function() { if (dragState && dragState.isTouch) dragState = null; });
-
 function updateTaskbar() {
   var c = document.getElementById('taskbarItems'); var html = '';
   for (var id in openWindows) {
@@ -675,15 +1330,12 @@ function updateTaskbar() {
   }
   c.innerHTML = html;
 }
-
 function toggleStart() { startOpen = !startOpen; document.getElementById('start-menu').classList.toggle('open', startOpen); if (!startOpen) { var ds = document.getElementById('docsSubmenu'); if (ds) ds.style.display = 'none'; } }
 function toggleDocs() { var ds = document.getElementById('docsSubmenu'); ds.style.display = ds.style.display === 'none' ? 'block' : 'none'; }
 function closeStart() { startOpen = false; document.getElementById('start-menu').classList.remove('open'); var ds = document.getElementById('docsSubmenu'); if (ds) ds.style.display = 'none'; }
-
 document.body.addEventListener('mousedown', function(e) {
   if (!e.target.closest('.desktop-icon') && !e.target.closest('.start-menu') && !e.target.closest('#startBtn')) closeStart();
 });
-
 window.addEventListener('resize', function() {
   if (isMobile()) {
     document.querySelectorAll('.window').forEach(function(w) {
@@ -693,10 +1345,7 @@ window.addEventListener('resize', function() {
     });
   }
 });
-
 renderDesktop();
-
-// Force background videos
 document.addEventListener('click', function playOnce() {
   var d = document.getElementById('bgVideoDesktop');
   var m = document.getElementById('bgVideoMobile');
