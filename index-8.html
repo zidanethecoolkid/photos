@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>photography.zip</title>
+
+<link rel="icon" href="https://res.cloudinary.com/dbuxi5yul/image/upload/v1773080620/ss2_xa7deu.png" type="image/png">
+<meta property="og:title" content="photography.zip">
+<meta property="og:description" content="photography portfolio">
+<meta property="og:image" content="https://res.cloudinary.com/dbuxi5yul/image/upload/v1773080986/sdsdd_uddl5z.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="photography.zip">
+<meta name="twitter:description" content="photography portfolio">
+<meta name="twitter:image" content="https://res.cloudinary.com/dbuxi5yul/image/upload/v1773080986/sdsdd_uddl5z.png">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #000;
+    overflow: hidden;
+    width: 100vw; height: 100vh; height: 100dvh;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, Geneva, sans-serif;
+    font-size: 11px;
+    user-select: none; -webkit-user-select: none;
+    cursor: default;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 99999;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
+    mix-blend-mode: multiply;
+  }
+
+  .desktop-icon {
+    position: absolute;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 4px; padding: 6px;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1;
+  }
+  .desktop-icon .icon-wrap { padding: 2px; align-self: flex-start; margin-left: 14px; }
+  .desktop-icon.selected .icon-wrap,
+  .desktop-icon.selected .icon-label { background: #000080; }
+  .desktop-icon .icon-label {
+    color: white; text-align: center; line-height: 16px;
+    padding: 2px 4px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    white-space: nowrap; font-size: 11px;
+  }
+  .desktop-icon.selected .icon-label { text-shadow: none; }
+
+  .window {
+    position: fixed; display: flex; flex-direction: column;
+    background: #c0c0c0;
+    border-top: 2px solid #dfdfdf; border-left: 2px solid #dfdfdf;
+    border-right: 2px solid #404040; border-bottom: 2px solid #404040;
+    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+  }
+
+  .title-bar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 3px 4px; display: flex; align-items: center; gap: 4px;
+    flex-shrink: 0; min-height: 28px; position: relative;
+  }
+  .title-bar .title-text {
+    color: white; font-weight: bold; font-size: 11px; flex: 1;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .win-btn {
+    background: #c0c0c0; border: none;
+    border-top: 1px solid #fff; border-left: 1px solid #fff;
+    border-right: 1px solid #404040; border-bottom: 1px solid #404040;
+    padding: 1px; cursor: pointer;
+    min-width: 16px; min-height: 14px;
+    display: flex; align-items: center; justify-content: center;
+    outline: none; font-size: 10px; line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .win-btn:active {
+    border-top: 1px solid #404040; border-left: 1px solid #404040;
+    border-right: 1px solid #fff; border-bottom: 1px solid #fff;
+  }
+  .close-btn { min-width: 28px; min-height: 24px; font-size: 14px; }
+
+  .menu-bar { display: flex; padding: 1px 0; border-bottom: 1px solid #808080; flex-shrink: 0; }
+  .menu-bar span { padding: 2px 8px; font-size: 11px; }
+
+  .address-bar {
+    display: flex; align-items: center; padding: 2px 4px; gap: 4px;
+    border-bottom: 1px solid #808080; flex-shrink: 0; font-size: 11px;
+  }
+  .address-bar .addr-input {
+    flex: 1; background: white;
+    border: 1px solid #808080; border-right-color: #dfdfdf; border-bottom-color: #dfdfdf;
+    padding: 1px 4px; font-family: inherit; font-size: 11px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  .window-content {
+    flex: 1; overflow: auto; -webkit-overflow-scrolling: touch;
+    background: white; margin: 2px;
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf;
+    touch-action: pan-y;
+  }
+
+  .status-bar { padding: 2px 6px; font-size: 11px; border-top: 1px solid #808080; color: #404040; flex-shrink: 0; }
+
+  .file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 90px);
+    gap: 8px; padding: 12px; align-content: start;
+  }
+  .file-item {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; padding: 6px; cursor: default; border-radius: 2px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .file-item:active, .file-item:hover { background: rgba(0,0,128,0.1); }
+  .file-item:active .file-label, .file-item:hover .file-label { background: #000080; color: white; }
+  .file-item .thumb {
+    width: 56px; height: 56px; background: #c0c0c0;
+    border: 1px solid #808080;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .file-item .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .file-item .file-label {
+    font-size: 11px; text-align: center; line-height: 13px;
+    word-break: break-all; max-width: 84px; padding: 0 2px;
+  }
+
+  .viewer-area {
+    flex: 1; background: #000; margin: 2px;
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .viewer-area img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+
+  .viewer-nav {
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    padding: 4px 6px; flex-shrink: 0; background: #c0c0c0;
+  }
+  .viewer-nav .win-btn { min-width: 36px; min-height: 28px; font-size: 14px; }
+  .viewer-nav .nav-label { font-size: 11px; min-width: 60px; text-align: center; }
+
+  .taskbar {
+    position: fixed; bottom: 0; left: 0; right: 0; height: 40px;
+    background: #c0c0c0; border-top: 2px solid #dfdfdf;
+    display: flex; align-items: center; padding: 2px; gap: 2px; z-index: 9998;
+  }
+  .start-btn {
+    font-weight: bold; padding: 2px 10px; height: 32px; font-size: 12px;
+    display: flex; align-items: center; gap: 4px; font-family: inherit;
+  }
+  .taskbar-divider { width: 1px; height: 28px; border-left: 1px solid #808080; border-right: 1px solid #dfdfdf; margin: 0 2px; }
+  .taskbar-items { flex: 1; display: flex; gap: 2px; overflow: hidden; }
+  .taskbar-item {
+    max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    height: 32px; padding: 2px 8px; font-family: inherit; font-size: 11px;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .taskbar-item.active {
+    border-top: 1px solid #404040; border-left: 1px solid #404040;
+    border-right: 1px solid #fff; border-bottom: 1px solid #fff;
+  }
+  .systray {
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #dfdfdf; border-bottom: 1px solid #dfdfdf;
+    padding: 2px 8px; height: 32px;
+    display: flex; align-items: center; gap: 6px; font-size: 11px;
+  }
+
+  .start-menu {
+    position: fixed; bottom: 40px; left: 0; width: 280px;
+    background: #c0c0c0;
+    border-top: 2px solid #dfdfdf; border-left: 2px solid #dfdfdf;
+    border-right: 2px solid #404040; border-bottom: 2px solid #404040;
+    z-index: 10000; display: none;
+    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+  }
+  .start-menu.open { display: block; }
+  .start-menu .sidebar {
+    background: #000080; width: 22px;
+    position: absolute; left: 2px; top: 2px; bottom: 2px;
+    display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px;
+  }
+  .start-menu .sidebar span {
+    color: #c0c0c0; font-size: 14px; font-weight: bold;
+    writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 2px;
+  }
+  .start-menu .menu-items { margin-left: 24px; padding: 2px 0; }
+  .start-menu .menu-item {
+    padding: 8px; display: flex; align-items: center; gap: 8px; font-size: 11px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .start-menu .menu-item:hover, .start-menu .menu-item:active { background: #000080; color: white; }
+  .start-menu .menu-sep { border-top: 1px solid #808080; border-bottom: 1px solid #dfdfdf; margin: 2px 4px; }
+
+  .drag-handle { display: none; }
+
+  @media (max-width: 768px) {
+    .desktop-icon .icon-wrap svg { width: 44px; height: 44px; }
+    .desktop-icon .icon-label { font-size: 12px; }
+    .title-bar { min-height: 38px; padding: 4px 6px; }
+    .title-bar .title-text { font-size: 13px; }
+    .close-btn { min-width: 38px; min-height: 32px; font-size: 18px; }
+    .menu-bar { display: none; }
+    .file-grid { grid-template-columns: repeat(auto-fill, 95px); gap: 10px; padding: 10px; }
+    .file-item { padding: 8px; }
+    .file-item .thumb { width: 64px; height: 64px; }
+    .file-item .file-label { font-size: 12px; max-width: 90px; }
+    .viewer-nav .win-btn { min-width: 44px; min-height: 34px; font-size: 18px; }
+    .drag-handle {
+      display: block; width: 40px; height: 4px;
+      background: rgba(255,255,255,0.4); border-radius: 2px;
+      position: absolute; top: 3px; left: 50%; transform: translateX(-50%);
+      pointer-events: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND VIDEO — same as main site or use a different one -->
+<video id="bgVideoDesktop" autoplay muted loop playsinline webkit-playsinline style="position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;object-fit:cover;z-index:0;pointer-events:none;">
+  <source src="https://res.cloudinary.com/dbuxi5yul/video/upload/v1773077298/OUTPUT_24_qus5lz.mp4" type="video/mp4">
+</video>
+<video id="bgVideoMobile" autoplay muted loop playsinline webkit-playsinline style="position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;object-fit:cover;z-index:0;pointer-events:none;display:none;">
+  <source src="https://res.cloudinary.com/dbuxi5yul/video/upload/v1773078239/OUTPUT_25_pf2lsa.mp4" type="video/mp4">
+</video>
+<script>
+(function(){
+  var desk = document.getElementById('bgVideoDesktop');
+  var mob = document.getElementById('bgVideoMobile');
+  function pickBg() {
+    if (window.innerWidth <= 768) {
+      desk.style.display = 'none'; desk.pause();
+      mob.style.display = 'block'; mob.play().catch(function(){});
+    } else {
+      mob.style.display = 'none'; mob.pause();
+      desk.style.display = 'block'; desk.play().catch(function(){});
+    }
+  }
+  pickBg();
+  window.addEventListener('resize', pickBg);
+})();
+</script>
+
+<div id="desktop" style="position:relative;z-index:1;"></div>
+<div id="windows" style="position:relative;z-index:2;"></div>
+
+<div id="start-menu" class="start-menu">
+  <div class="sidebar"><span>zidufilm</span></div>
+  <div class="menu-items">
+    <div class="menu-item" onclick="window.open('https://instagram.com/zidufilm', '_blank');closeStart();">📸 Instagram</div>
+    <div class="menu-item" onclick="window.open('https://instagram.com/ziduflicks', '_blank');closeStart();">📸 Socials</div>
+    <div class="menu-sep"></div>
+    <div class="menu-item">🔌 Shut Down...</div>
+  </div>
+</div>
+
+<div class="taskbar">
+  <button class="win-btn start-btn" id="startBtn" onclick="toggleStart()">
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <rect x="1" y="1" width="6" height="6" fill="#FF0000"/>
+      <rect x="9" y="1" width="6" height="6" fill="#00FF00"/>
+      <rect x="1" y="9" width="6" height="6" fill="#0000FF"/>
+      <rect x="9" y="9" width="6" height="6" fill="#FFFF00"/>
+    </svg>
+    zidufilm
+  </button>
+  <div class="taskbar-divider"></div>
+  <div class="taskbar-items" id="taskbarItems"></div>
+  <div class="systray">🔊 <span id="clock"></span></div>
+</div>
+
+<script>
+// =====================================================
+//  FOLDERS — 001.zip to 032.zip
+//  Add your Cloudinary image URLs inside each folder
+// =====================================================
+var FOLDERS = [];
+for (var i = 1; i <= 32; i++) {
+  var num = i < 10 ? '00' + i : '0' + i;
+  FOLDERS.push({
+    id: 'f' + num,
+    name: num + '.zip',
+    images: [
+      // ADD YOUR IMAGES HERE like:
+      // { id: 'f001_1', name: 'img_001.jpg', url: 'https://res.cloudinary.com/...' },
+      // { id: 'f001_2', name: 'img_002.jpg', url: 'https://res.cloudinary.com/...' },
+      // For now using placeholders:
+      { id: 'f' + num + '_1', name: 'img_01.jpg', url: 'https://picsum.photos/seed/' + num + 'a/800/1200' },
+      { id: 'f' + num + '_2', name: 'img_02.jpg', url: 'https://picsum.photos/seed/' + num + 'b/800/1200' },
+      { id: 'f' + num + '_3', name: 'img_03.jpg', url: 'https://picsum.photos/seed/' + num + 'c/800/1200' },
+    ]
+  });
+}
+
+// =====================================================
+//  ENGINE
+// =====================================================
+var zCounter = 100;
+var activeWindowId = null;
+var openWindows = {};
+var viewerStates = {};
+var startOpen = false;
+var isMobile = function() { return window.innerWidth <= 768; };
+
+var folderSVG = '<svg width="40" height="40" viewBox="0 0 32 32" fill="none"><path d="M2 8H14L16 5H30V27H2V8Z" fill="#FFDE00" stroke="#808000" stroke-width="1"/><path d="M2 10H30V27H2V10Z" fill="#FFC800" stroke="#808000" stroke-width="1"/><path d="M3 11H29V26H3V11Z" fill="#FFDE00"/></svg>';
+var imageSVG = '<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" fill="white" stroke="#808080"/><rect x="6" y="6" width="20" height="16" fill="#000080"/><circle cx="12" cy="12" r="3" fill="#FFFF00"/><path d="M6 22L12 16L16 19L22 13L26 18V22H6Z" fill="#008000"/></svg>';
+
+function updateClock() {
+  var now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+}
+updateClock(); setInterval(updateClock, 30000);
+
+function renderDesktop() {
+  var desktop = document.getElementById('desktop');
+  var html = '';
+  var cols = isMobile() ? 4 : 8;
+  var cellW = isMobile() ? 85 : 90;
+  var cellH = isMobile() ? 80 : 78;
+  var startX = 10;
+  var startY = 10;
+
+  FOLDERS.forEach(function(folder, i) {
+    var col = i % cols;
+    var row = Math.floor(i / cols);
+    var x = startX + col * cellW;
+    var y = startY + row * cellH;
+    html += '<div class="desktop-icon" id="dicon-' + folder.id + '" style="left:' + x + 'px;top:' + y + 'px" ' +
+      'onmousedown="startIconDrag(event, \'dicon-' + folder.id + '\', function(){openFolder(\'' + folder.id + '\')})" ' +
+      'ontouchstart="startIconDragTouch(event, \'dicon-' + folder.id + '\', function(){openFolder(\'' + folder.id + '\')})">' +
+      '<div class="icon-wrap">' + folderSVG + '</div>' +
+      '<div class="icon-label">' + folder.name + '</div></div>';
+  });
+  desktop.innerHTML = html;
+}
+
+function bringToFront(wid) {
+  zCounter++; var el = document.getElementById(wid);
+  if (el) el.style.zIndex = zCounter;
+  activeWindowId = wid; updateTaskbar();
+}
+
+function getWindowSize(type) {
+  if (isMobile()) {
+    var w = window.innerWidth - 8;
+    var h = Math.round((window.innerHeight || document.documentElement.clientHeight) * 0.75);
+    var y = Math.round(((window.innerHeight || document.documentElement.clientHeight) - 48 - h) / 2);
+    if (y < 4) y = 4;
+    return { w: w, h: h, x: 4, y: y };
+  }
+  var n = Object.keys(openWindows).length;
+  if (type === 'viewer') return { w: 700, h: 550, x: 160 + n * 25, y: 60 + n * 25 };
+  return { w: 520, h: 400, x: 120 + n * 30, y: 40 + n * 30 };
+}
+
+function openFolder(folderId) {
+  var wid = 'win-' + folderId;
+  if (openWindows[wid]) { bringToFront(wid); return; }
+  var folder = FOLDERS.find(function(f) { return f.id === folderId; });
+  if (!folder) return;
+  var sz = getWindowSize('folder');
+
+  var items = '';
+  folder.images.forEach(function(img) {
+    items += '<div class="file-item" ondblclick="openImage(\'' + img.id + '\',\'' + folderId + '\')" ontouchend="event.preventDefault();openImage(\'' + img.id + '\',\'' + folderId + '\')">' +
+      '<div class="thumb"><img src="' + img.url + '" alt="' + img.name + '" loading="lazy"></div>' +
+      '<div class="file-label">' + img.name + '</div></div>';
+  });
+
+  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
+    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
+    '<div class="drag-handle"></div>' + folderSVG +
+    '<span class="title-text">' + folder.name + '</span>' +
+    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
+    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+    '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
+    '<div class="address-bar"><span>Address:</span><div class="addr-input">C:\\Photos\\' + folder.name + '</div></div>' +
+    '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
+    '<div class="status-bar">' + folder.images.length + ' image(s)</div></div>';
+
+  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
+  openWindows[wid] = { type: 'folder', name: folder.name };
+  bringToFront(wid); updateTaskbar();
+}
+
+function openImage(imageId, folderId) {
+  var wid = 'win-img-' + imageId;
+  if (openWindows[wid]) { bringToFront(wid); return; }
+  var folder = FOLDERS.find(function(f) { return f.id === folderId; });
+  var imgIdx = folder.images.findIndex(function(img) { return img.id === imageId; });
+  var image = folder.images[imgIdx];
+  if (!image) return;
+  var sz = getWindowSize('viewer');
+
+  viewerStates[wid] = { folderId: folderId, currentIdx: imgIdx };
+
+  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
+    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
+    '<div class="drag-handle"></div>' + imageSVG +
+    '<span class="title-text" id="title-' + wid + '">' + image.name + ' — Image Viewer</span>' +
+    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
+    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+    '<div class="viewer-area"><img id="vimg-' + wid + '" src="' + image.url + '" alt="' + image.name + '"></div>' +
+    '<div class="viewer-nav">' +
+    '<button class="win-btn" onclick="navImage(\''+wid+'\',-1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',-1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="8,2 2,7 8,12" fill="black"/></svg></button>' +
+    '<span class="nav-label" id="navlabel-' + wid + '">' + (imgIdx+1) + ' / ' + folder.images.length + '</span>' +
+    '<button class="win-btn" onclick="navImage(\''+wid+'\',1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="6,2 12,7 6,12" fill="black"/></svg></button></div></div>';
+
+  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
+  openWindows[wid] = { type: 'image', name: image.name };
+  bringToFront(wid); updateTaskbar();
+}
+
+function navImage(wid, dir) {
+  var state = viewerStates[wid]; if (!state) return;
+  var folder = FOLDERS.find(function(f) { return f.id === state.folderId; });
+  if (!folder) return;
+  var newIdx = state.currentIdx + dir;
+  if (newIdx < 0) newIdx = folder.images.length - 1;
+  if (newIdx >= folder.images.length) newIdx = 0;
+  state.currentIdx = newIdx;
+  var img = folder.images[newIdx];
+  document.getElementById('vimg-' + wid).src = img.url;
+  document.getElementById('title-' + wid).textContent = img.name + ' — Image Viewer';
+  document.getElementById('navlabel-' + wid).textContent = (newIdx+1) + ' / ' + folder.images.length;
+  openWindows[wid].name = img.name;
+  updateTaskbar();
+}
+
+function closeWindow(wid) {
+  var el = document.getElementById(wid); if (el) el.remove();
+  delete openWindows[wid]; delete viewerStates[wid]; updateTaskbar();
+}
+
+// Icon dragging
+var iconDrag = null;
+function startIconDrag(e, iconId, openFn) {
+  e.preventDefault(); closeStart();
+  var el = document.getElementById(iconId); var rect = el.getBoundingClientRect();
+  iconDrag = { id: iconId, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top, startX: e.clientX, startY: e.clientY, moved: false, openFn: openFn };
+}
+function startIconDragTouch(e, iconId, openFn) {
+  closeStart();
+  var touch = e.touches[0]; if (!touch) return;
+  var el = document.getElementById(iconId); var rect = el.getBoundingClientRect();
+  iconDrag = { id: iconId, offsetX: touch.clientX - rect.left, offsetY: touch.clientY - rect.top, startX: touch.clientX, startY: touch.clientY, moved: false, isTouch: true, openFn: openFn };
+}
+document.addEventListener('mousemove', function(e) {
+  if (!iconDrag || iconDrag.isTouch) return;
+  if (!iconDrag.moved && Math.abs(e.clientX - iconDrag.startX) < 5 && Math.abs(e.clientY - iconDrag.startY) < 5) return;
+  iconDrag.moved = true;
+  var el = document.getElementById(iconDrag.id);
+  if (el) { el.style.left = (e.clientX - iconDrag.offsetX) + 'px'; el.style.top = (e.clientY - iconDrag.offsetY) + 'px'; }
+});
+document.addEventListener('mouseup', function() {
+  if (!iconDrag || iconDrag.isTouch) return;
+  if (!iconDrag.moved) {
+    var now = Date.now();
+    var el = document.getElementById(iconDrag.id);
+    if (el && el._lastClick && now - el._lastClick < 400) { iconDrag.openFn(); el._lastClick = 0; }
+    else if (el) el._lastClick = now;
+  }
+  iconDrag = null;
+});
+document.addEventListener('touchmove', function(e) {
+  if (!iconDrag || !iconDrag.isTouch) return;
+  var touch = e.touches[0]; if (!touch) return;
+  if (!iconDrag.moved && Math.abs(touch.clientX - iconDrag.startX) < 8 && Math.abs(touch.clientY - iconDrag.startY) < 8) return;
+  iconDrag.moved = true; e.preventDefault();
+  var el = document.getElementById(iconDrag.id);
+  if (el) { el.style.left = (touch.clientX - iconDrag.offsetX) + 'px'; el.style.top = (touch.clientY - iconDrag.offsetY) + 'px'; }
+}, { passive: false });
+document.addEventListener('touchend', function() {
+  if (!iconDrag || !iconDrag.isTouch) return;
+  if (!iconDrag.moved) iconDrag.openFn();
+  iconDrag = null;
+});
+
+// Window dragging
+var dragState = null;
+function startDrag(e, wid) {
+  if (e.target.closest('button')) return;
+  bringToFront(wid); var el = document.getElementById(wid); var r = el.getBoundingClientRect();
+  dragState = { windowId: wid, offsetX: e.clientX - r.left, offsetY: e.clientY - r.top }; e.preventDefault();
+}
+document.addEventListener('mousemove', function(e) {
+  if (!dragState || dragState.isTouch) return;
+  var el = document.getElementById(dragState.windowId);
+  if (el) { el.style.left = (e.clientX - dragState.offsetX) + 'px'; el.style.top = (e.clientY - dragState.offsetY) + 'px'; }
+});
+document.addEventListener('mouseup', function() { if (dragState && !dragState.isTouch) dragState = null; });
+
+function startDragTouch(e, wid) {
+  if (e.target.closest('button')) return;
+  bringToFront(wid); var touch = e.touches[0]; if (!touch) return;
+  var el = document.getElementById(wid); var r = el.getBoundingClientRect();
+  dragState = { windowId: wid, offsetX: touch.clientX - r.left, offsetY: touch.clientY - r.top, isTouch: true, startX: touch.clientX, startY: touch.clientY, moved: false };
+}
+document.addEventListener('touchmove', function(e) {
+  if (!dragState || !dragState.isTouch) return;
+  var touch = e.touches[0]; if (!touch) return;
+  if (!dragState.moved && Math.abs(touch.clientX-dragState.startX)<8 && Math.abs(touch.clientY-dragState.startY)<8) return;
+  dragState.moved = true; e.preventDefault();
+  var el = document.getElementById(dragState.windowId);
+  if (el) {
+    var nx = touch.clientX-dragState.offsetX, ny = touch.clientY-dragState.offsetY;
+    ny = Math.max(-10, Math.min(ny, window.innerHeight-60));
+    nx = Math.max(-el.offsetWidth+60, Math.min(nx, window.innerWidth-60));
+    el.style.left = nx+'px'; el.style.top = ny+'px';
+  }
+}, { passive: false });
+document.addEventListener('touchend', function() { if (dragState && dragState.isTouch) dragState = null; });
+
+function updateTaskbar() {
+  var c = document.getElementById('taskbarItems'); var html = '';
+  for (var id in openWindows) {
+    var w = openWindows[id];
+    var icon = w.type === 'folder' ? '📁' : '🖼️';
+    html += '<button class="win-btn taskbar-item '+(id===activeWindowId?'active':'')+'" onclick="bringToFront(\''+id+'\')">' + icon + ' ' + w.name + '</button>';
+  }
+  c.innerHTML = html;
+}
+
+function toggleStart() { startOpen = !startOpen; document.getElementById('start-menu').classList.toggle('open', startOpen); }
+function closeStart() { startOpen = false; document.getElementById('start-menu').classList.remove('open'); }
+
+document.body.addEventListener('mousedown', function(e) {
+  if (!e.target.closest('.desktop-icon') && !e.target.closest('.start-menu') && !e.target.closest('#startBtn')) closeStart();
+});
+
+window.addEventListener('resize', function() {
+  if (isMobile()) {
+    document.querySelectorAll('.window').forEach(function(w) {
+      var sz = getWindowSize('folder');
+      w.style.left = sz.x + 'px'; w.style.top = sz.y + 'px';
+      w.style.width = sz.w + 'px'; w.style.height = sz.h + 'px';
+    });
+  }
+});
+
+renderDesktop();
+
+// Force background videos
+document.addEventListener('click', function playOnce() {
+  var d = document.getElementById('bgVideoDesktop');
+  var m = document.getElementById('bgVideoMobile');
+  if (d) d.play().catch(function(){});
+  if (m) m.play().catch(function(){});
+  document.removeEventListener('click', playOnce);
+});
+</script>
+</body>
+</html>
