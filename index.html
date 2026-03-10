@@ -992,21 +992,75 @@ function openImageFromZip(imageId, zipId, groupId) {
   var imgIdx = zip.images.findIndex(function(img) { return img.id === imageId; });
   var image = zip.images[imgIdx];
   if (!image) return;
-  var sz = getWindowSize('viewer');
   viewerStates[wid] = { groupId: groupId, zipId: zipId, currentIdx: imgIdx };
   var imgBackFn = "goBack('" + wid + "','openZip',['" + zipId + "','" + groupId + "'])";
-  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
-    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
-    '<div class="drag-handle"></div>' + imageSVG + '<span class="title-text" id="title-' + wid + '">' + image.name + ' — Image Viewer</span>' +
-    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
-    '<div style="display:flex;align-items:center;padding:2px 4px;border-bottom:1px solid #808080;flex-shrink:0"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px" onclick="' + imgBackFn + '" ontouchend="event.preventDefault();' + imgBackFn + '">◀</button></div>' +
-    '<div class="viewer-area"><img id="vimg-' + wid + '" src="' + image.url + '" alt="' + image.name + '"></div>' +
-    '<div class="viewer-nav">' +
-    '<button class="win-btn" onclick="navImage(\''+wid+'\',-1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',-1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="8,2 2,7 8,12" fill="black"/></svg></button>' +
-    '<span class="nav-label" id="navlabel-' + wid + '">' + (imgIdx+1) + ' / ' + zip.images.length + ' [' + zip.name + ']</span>' +
-    '<button class="win-btn" onclick="navImage(\''+wid+'\',1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="6,2 12,7 6,12" fill="black"/></svg></button></div></div>';
-  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
-  openWindows[wid] = { type: 'image', name: image.name }; bringToFront(wid); updateTaskbar();
+  // Preload image to get dimensions
+  var preload = new Image();
+  preload.onload = function() {
+    var sz = fitWindow(preload.naturalWidth, preload.naturalHeight);
+    var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
+      '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
+      '<div class="drag-handle"></div>' + imageSVG + '<span class="title-text" id="title-' + wid + '">' + image.name + ' — Image Viewer</span>' +
+      '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+      '<div style="display:flex;align-items:center;padding:2px 4px;border-bottom:1px solid #808080;flex-shrink:0"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px" onclick="' + imgBackFn + '" ontouchend="event.preventDefault();' + imgBackFn + '">◀</button></div>' +
+      '<div class="viewer-area"><img id="vimg-' + wid + '" src="' + image.url + '" alt="' + image.name + '"></div>' +
+      '<div class="viewer-nav">' +
+      '<button class="win-btn" onclick="navImage(\''+wid+'\',-1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',-1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="8,2 2,7 8,12" fill="black"/></svg></button>' +
+      '<span class="nav-label" id="navlabel-' + wid + '">' + (imgIdx+1) + ' / ' + zip.images.length + ' [' + zip.name + ']</span>' +
+      '<button class="win-btn" onclick="navImage(\''+wid+'\',1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="6,2 12,7 6,12" fill="black"/></svg></button></div></div>';
+    document.getElementById('windows').insertAdjacentHTML('beforeend', h);
+    openWindows[wid] = { type: 'image', name: image.name }; bringToFront(wid); updateTaskbar();
+  };
+  preload.onerror = function() {
+    // Fallback if image fails to load
+    var sz = getWindowSize('viewer');
+    var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
+      '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
+      '<div class="drag-handle"></div>' + imageSVG + '<span class="title-text" id="title-' + wid + '">' + image.name + ' — Image Viewer</span>' +
+      '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+      '<div style="display:flex;align-items:center;padding:2px 4px;border-bottom:1px solid #808080;flex-shrink:0"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px" onclick="' + imgBackFn + '" ontouchend="event.preventDefault();' + imgBackFn + '">◀</button></div>' +
+      '<div class="viewer-area"><img id="vimg-' + wid + '" src="' + image.url + '" alt="' + image.name + '"></div>' +
+      '<div class="viewer-nav">' +
+      '<button class="win-btn" onclick="navImage(\''+wid+'\',-1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',-1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="8,2 2,7 8,12" fill="black"/></svg></button>' +
+      '<span class="nav-label" id="navlabel-' + wid + '">' + (imgIdx+1) + ' / ' + zip.images.length + ' [' + zip.name + ']</span>' +
+      '<button class="win-btn" onclick="navImage(\''+wid+'\',1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="6,2 12,7 6,12" fill="black"/></svg></button></div></div>';
+    document.getElementById('windows').insertAdjacentHTML('beforeend', h);
+    openWindows[wid] = { type: 'image', name: image.name }; bringToFront(wid); updateTaskbar();
+  };
+  preload.src = image.url;
+}
+// Size window to fit image aspect ratio
+function fitWindow(imgW, imgH) {
+  var chrome = 80; // title bar + back bar + nav bar
+  var maxW, maxH;
+  if (isMobile()) {
+    maxW = window.innerWidth - 8;
+    maxH = (window.innerHeight || document.documentElement.clientHeight) - 48 - 10;
+  } else {
+    maxW = Math.min(800, window.innerWidth - 100);
+    maxH = Math.min(700, (window.innerHeight || document.documentElement.clientHeight) - 100);
+  }
+  var availH = maxH - chrome;
+  var ratio = imgW / imgH;
+  var w, h;
+  if (ratio >= 1) {
+    // Landscape or square
+    w = maxW;
+    h = Math.round(w / ratio) + chrome;
+    if (h > maxH) { h = maxH; w = Math.round((h - chrome) * ratio); }
+  } else {
+    // Portrait
+    h = maxH;
+    w = Math.round((h - chrome) * ratio);
+    if (w > maxW) { w = maxW; h = Math.round(w / ratio) + chrome; }
+  }
+  w = Math.max(300, w);
+  h = Math.max(200, h);
+  var x = Math.round((window.innerWidth - w) / 2);
+  var y = Math.round(((window.innerHeight || document.documentElement.clientHeight) - 48 - h) / 2);
+  if (y < 4) y = 4;
+  if (x < 4) x = 4;
+  return { w: w, h: h, x: x, y: y };
 }
 // CROSS-ZIP NAVIGATION — when you reach the end of a zip, continues into the next zip in the group
 function navImage(wid, dir) {
@@ -1036,7 +1090,16 @@ function navImage(wid, dir) {
     state.currentIdx = newIdx;
   }
   var img = zip.images[newIdx];
-  document.getElementById('vimg-' + wid).src = img.url;
+  var vimg = document.getElementById('vimg-' + wid);
+  vimg.src = img.url;
+  // Resize window to fit new image
+  var preload = new Image();
+  preload.onload = function() {
+    var sz = fitWindow(preload.naturalWidth, preload.naturalHeight);
+    var el = document.getElementById(wid);
+    if (el) { el.style.width = sz.w+'px'; el.style.height = sz.h+'px'; el.style.left = sz.x+'px'; el.style.top = sz.y+'px'; }
+  };
+  preload.src = img.url;
   document.getElementById('title-' + wid).textContent = img.name + ' — Image Viewer (' + zip.name + ')';
   document.getElementById('navlabel-' + wid).textContent = (newIdx+1) + ' / ' + zip.images.length + ' [' + zip.name + ']';
   openWindows[wid].name = img.name;
