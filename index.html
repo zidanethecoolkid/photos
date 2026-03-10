@@ -260,8 +260,14 @@
 <div id="start-menu" class="start-menu">
   <div class="sidebar"><span>zidufilm</span></div>
   <div class="menu-items">
-    <div class="menu-item" onclick="window.open('https://instagram.com/zidufilm', '_blank');closeStart();">📸 Instagram</div>
-    <div class="menu-item" onclick="window.open('https://instagram.com/ziduflicks', '_blank');closeStart();">📸 Socials</div>
+    <div class="menu-item" onclick="window.open(VIDEOGRAPHY_URL, '_blank');closeStart();">🎬 videography.zip</div>
+    <div class="menu-item" id="docsMenuItem" onclick="toggleDocs()">📄 Documents ▸</div>
+    <div id="docsSubmenu" style="display:none;">
+      <div class="menu-item" style="padding-left:24px" onclick="openCategory('friendsandfamily');closeStart();">📁 friendsandfamily.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openCategory('travel');closeStart();">📁 travel.zip</div>
+      <div class="menu-item" style="padding-left:24px" onclick="openCategory('outandabout');closeStart();">📁 outandabout.zip</div>
+    </div>
+    <div class="menu-item" onclick="window.open('https://instagram.com/zidufilm', '_blank');closeStart();">📸 Socials</div>
     <div class="menu-sep"></div>
     <div class="menu-item">🔌 Shut Down...</div>
   </div>
@@ -288,35 +294,52 @@
 //  Each contains sub-folders (zips) which contain images
 // =====================================================
 
+// YOUR VIDEOGRAPHY SITE URL — where the videography.zip icon links to
+var VIDEOGRAPHY_URL = "https://your-videography-site.vercel.app";
+
 function makeZip(num) {
   var s = num < 10 ? '00' + num : '0' + num;
+  var imgs = [];
+  for (var j = 1; j <= 20; j++) {
+    var jj = j < 10 ? '0' + j : '' + j;
+    imgs.push({ id: 'z' + s + '_' + j, name: 'img_' + jj + '.jpg', url: 'https://picsum.photos/seed/' + s + '_' + jj + '/800/1200' });
+  }
   return {
     id: 'z' + s,
     name: s + '.zip',
-    images: [
-      // REPLACE these placeholder URLs with your real Cloudinary image URLs
-      { id: 'z' + s + '_1', name: 'img_01.jpg', url: 'https://picsum.photos/seed/' + s + 'a/800/1200' },
-      { id: 'z' + s + '_2', name: 'img_02.jpg', url: 'https://picsum.photos/seed/' + s + 'b/800/1200' },
-      { id: 'z' + s + '_3', name: 'img_03.jpg', url: 'https://picsum.photos/seed/' + s + 'c/800/1200' },
-    ]
+    type: 'zip',
+    images: imgs
   };
+}
+
+function makeGroup(id, name, nums) {
+  return { id: id, name: name, type: 'group', children: nums.map(makeZip) };
 }
 
 var CATEGORIES = [
   {
     id: 'friendsandfamily',
     name: 'friendsandfamily.zip',
-    subfolders: [1,2,3,4,5,6,7,8,9,10,11,15,16,17,18,23,24,25,30].map(makeZip)
+    items: [
+      makeGroup('outside', 'outside.zip', [1, 2, 4, 5, 6, 7, 8, 10, 11, 15, 16, 23, 30]),
+      makeGroup('gatherings', 'gatherings.zip', [3, 9, 17, 18, 24, 25])
+    ]
   },
   {
     id: 'travel',
     name: 'travel.zip',
-    subfolders: [12,13,14,19,20,21,22,31,32].map(makeZip)
+    items: [
+      makeGroup('cali25', 'cali25.zip', [12, 13, 14]),
+      makeGroup('nyc25', 'nyc25.zip', [18, 19, 20, 21, 22]),
+      makeGroup('chicago25', 'chicago25.zip', [31, 32])
+    ]
   },
   {
     id: 'outandabout',
     name: 'outandabout.zip',
-    subfolders: [26,27,28,29].map(makeZip)
+    items: [
+      makeGroup('soccercharitymatch', 'soccercharitymatch.zip', [26, 27, 28, 29])
+    ]
   }
 ];
 
@@ -356,67 +379,6 @@ function renderDesktop() {
   desktop.innerHTML = html;
 }
 
-function openCategory(catId) {
-  var wid = 'win-cat-' + catId;
-  if (openWindows[wid]) { bringToFront(wid); return; }
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  if (!cat) return;
-  var sz = getWindowSize('folder');
-
-  var items = '';
-  cat.subfolders.forEach(function(sub) {
-    items += '<div class="file-item" ondblclick="openSubfolder(\'' + sub.id + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openSubfolder(\'' + sub.id + '\',\'' + catId + '\')">' +
-      '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + zipSVG + '</div>' +
-      '<div class="file-label">' + sub.name + '</div></div>';
-  });
-
-  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
-    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
-    '<div class="drag-handle"></div>' + folderSVG +
-    '<span class="title-text">' + cat.name + '</span>' +
-    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
-    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
-    '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
-    '<div class="address-bar"><span>Address:</span><div class="addr-input">C:\\Photos\\' + cat.name + '</div></div>' +
-    '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
-    '<div class="status-bar">' + cat.subfolders.length + ' folder(s)</div></div>';
-
-  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
-  openWindows[wid] = { type: 'folder', name: cat.name };
-  bringToFront(wid); updateTaskbar();
-}
-
-function openSubfolder(subId, catId) {
-  var wid = 'win-sub-' + subId;
-  if (openWindows[wid]) { bringToFront(wid); return; }
-  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  var sub = cat.subfolders.find(function(s) { return s.id === subId; });
-  if (!sub) return;
-  var sz = getWindowSize('folder');
-
-  var items = '';
-  sub.images.forEach(function(img) {
-    items += '<div class="file-item" ondblclick="openImage(\'' + img.id + '\',\'' + subId + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openImage(\'' + img.id + '\',\'' + subId + '\',\'' + catId + '\')">' +
-      '<div class="thumb"><img src="' + img.url + '" alt="' + img.name + '" loading="lazy"></div>' +
-      '<div class="file-label">' + img.name + '</div></div>';
-  });
-
-  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
-    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
-    '<div class="drag-handle"></div>' + zipSVG +
-    '<span class="title-text">' + sub.name + '</span>' +
-    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
-    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
-    '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
-    '<div class="address-bar"><span>Address:</span><div class="addr-input">C:\\Photos\\' + cat.name + '\\' + sub.name + '</div></div>' +
-    '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
-    '<div class="status-bar">' + sub.images.length + ' image(s)</div></div>';
-
-  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
-  openWindows[wid] = { type: 'folder', name: sub.name };
-  bringToFront(wid); updateTaskbar();
-}
-
 function bringToFront(wid) {
   zCounter++; var el = document.getElementById(wid);
   if (el) el.style.zIndex = zCounter;
@@ -436,17 +398,150 @@ function getWindowSize(type) {
   return { w: 520, h: 400, x: 120 + n * 30, y: 40 + n * 30 };
 }
 
-function openImage(imageId, subId, catId) {
-  var wid = 'win-img-' + imageId;
+function openCategory(catId) {
+  var wid = 'win-cat-' + catId;
   if (openWindows[wid]) { bringToFront(wid); return; }
   var cat = CATEGORIES.find(function(c) { return c.id === catId; });
-  var sub = cat.subfolders.find(function(s) { return s.id === subId; });
-  var imgIdx = sub.images.findIndex(function(img) { return img.id === imageId; });
-  var image = sub.images[imgIdx];
+  if (!cat) return;
+  var sz = getWindowSize('folder');
+
+  var items = '';
+  cat.items.forEach(function(item) {
+    if (item.type === 'group') {
+      items += '<div class="file-item" ondblclick="openGroup(\'' + item.id + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openGroup(\'' + item.id + '\',\'' + catId + '\')">' +
+        '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + folderSVG + '</div>' +
+        '<div class="file-label">' + item.name + '</div></div>';
+    } else {
+      items += '<div class="file-item" ondblclick="openZipFromCat(\'' + item.id + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openZipFromCat(\'' + item.id + '\',\'' + catId + '\')">' +
+        '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + zipSVG + '</div>' +
+        '<div class="file-label">' + item.name + '</div></div>';
+    }
+  });
+
+  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
+    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
+    '<div class="drag-handle"></div>' + folderSVG +
+    '<span class="title-text">' + cat.name + '</span>' +
+    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
+    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+    '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
+    '<div class="address-bar"><span>Address:</span><div class="addr-input">C:\\Photos\\' + cat.name + '</div></div>' +
+    '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
+    '<div class="status-bar">' + cat.items.length + ' item(s)</div></div>';
+
+  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
+  openWindows[wid] = { type: 'folder', name: cat.name };
+  bringToFront(wid); updateTaskbar();
+}
+
+function openGroup(groupId, catId) {
+  var wid = 'win-grp-' + groupId;
+  if (openWindows[wid]) { bringToFront(wid); return; }
+  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
+  var group = cat.items.find(function(i) { return i.id === groupId; });
+  if (!group) return;
+  var sz = getWindowSize('folder');
+
+  var items = '';
+  group.children.forEach(function(zip) {
+    items += '<div class="file-item" ondblclick="openZipFromGroup(\'' + zip.id + '\',\'' + groupId + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openZipFromGroup(\'' + zip.id + '\',\'' + groupId + '\',\'' + catId + '\')">' +
+      '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + zipSVG + '</div>' +
+      '<div class="file-label">' + zip.name + '</div></div>';
+  });
+
+  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
+    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
+    '<div class="drag-handle"></div>' + folderSVG +
+    '<span class="title-text">' + group.name + '</span>' +
+    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
+    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+    '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
+    '<div class="address-bar"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px;margin-right:4px" onclick="goBack(\''+wid+'\',\'openCategory\',[\'' + catId + '\'])" ontouchend="event.preventDefault();goBack(\''+wid+'\',\'openCategory\',[\'' + catId + '\'])">◀</button><span>Address:</span><div class="addr-input">C:\\Photos\\' + cat.name + '\\' + group.name + '</div></div>' +
+    '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
+    '<div class="status-bar">' + group.children.length + ' folder(s)</div></div>';
+
+  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
+  openWindows[wid] = { type: 'folder', name: group.name };
+  bringToFront(wid); updateTaskbar();
+}
+
+function openZipFromCat(zipId, catId) {
+  var wid = 'win-zip-' + zipId;
+  if (openWindows[wid]) { bringToFront(wid); return; }
+  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
+  var zip = cat.items.find(function(i) { return i.id === zipId; });
+  if (!zip) return;
+  openZipWindow(wid, zip, catId, '');
+}
+
+function openZipFromGroup(zipId, groupId, catId) {
+  var wid = 'win-zip-' + zipId + '-' + groupId;
+  if (openWindows[wid]) { bringToFront(wid); return; }
+  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
+  var group = cat.items.find(function(i) { return i.id === groupId; });
+  var zip = group.children.find(function(z) { return z.id === zipId; });
+  if (!zip) return;
+  openZipWindow(wid, zip, catId, groupId);
+}
+
+function openZipWindow(wid, zip, catId, groupId) {
+  var sz = getWindowSize('folder');
+  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
+  var path = 'C:\\Photos\\' + cat.name;
+  if (groupId) {
+    var group = cat.items.find(function(i) { return i.id === groupId; });
+    path += '\\' + group.name;
+  }
+  path += '\\' + zip.name;
+
+  var items = '';
+  zip.images.forEach(function(img) {
+    items += '<div class="file-item" ondblclick="openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + (groupId||'') + '\',\'' + catId + '\')" ontouchend="event.preventDefault();openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + (groupId||'') + '\',\'' + catId + '\')">' +
+      '<div class="thumb"><img src="' + img.url + '" alt="' + img.name + '" loading="lazy"></div>' +
+      '<div class="file-label">' + img.name + '</div></div>';
+  });
+
+  var backFn = groupId ? "goBack('" + wid + "','openGroup',['" + groupId + "','" + catId + "'])" : "goBack('" + wid + "','openCategory',['" + catId + "'])";
+
+  var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
+    '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
+    '<div class="drag-handle"></div>' + zipSVG +
+    '<span class="title-text">' + zip.name + '</span>' +
+    '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
+    '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+    '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
+    '<div class="address-bar"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px;margin-right:4px" onclick="' + backFn + '" ontouchend="event.preventDefault();' + backFn + '">◀</button><span>Address:</span><div class="addr-input">' + path + '</div></div>' +
+    '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
+    '<div class="status-bar">' + zip.images.length + ' image(s)</div></div>';
+
+  document.getElementById('windows').insertAdjacentHTML('beforeend', h);
+  openWindows[wid] = { type: 'folder', name: zip.name };
+  bringToFront(wid); updateTaskbar();
+}
+
+function findZip(zipId, catId, groupId) {
+  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
+  if (groupId) {
+    var group = cat.items.find(function(i) { return i.id === groupId; });
+    return group.children.find(function(z) { return z.id === zipId; });
+  }
+  return cat.items.find(function(i) { return i.id === zipId; });
+}
+
+function openImageFromZip(imageId, zipId, groupId, catId) {
+  var wid = 'win-img-' + imageId + '-' + zipId;
+  if (openWindows[wid]) { bringToFront(wid); return; }
+  var zip = findZip(zipId, catId, groupId);
+  var imgIdx = zip.images.findIndex(function(img) { return img.id === imageId; });
+  var image = zip.images[imgIdx];
   if (!image) return;
   var sz = getWindowSize('viewer');
 
-  viewerStates[wid] = { catId: catId, subId: subId, currentIdx: imgIdx };
+  viewerStates[wid] = { catId: catId, groupId: groupId, zipId: zipId, currentIdx: imgIdx };
+
+  var imgBackFn = groupId ?
+    "goBack('" + wid + "','openZipFromGroup',['" + zipId + "','" + groupId + "','" + catId + "'])" :
+    "goBack('" + wid + "','openZipFromCat',['" + zipId + "','" + catId + "'])";
 
   var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
     '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
@@ -454,10 +549,11 @@ function openImage(imageId, subId, catId) {
     '<span class="title-text" id="title-' + wid + '">' + image.name + ' — Image Viewer</span>' +
     '<div style="display:flex;gap:2px" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">' +
     '<button class="win-btn close-btn" onclick="closeWindow(\''+wid+'\')" ontouchend="event.preventDefault();closeWindow(\''+wid+'\')">✕</button></div></div>' +
+    '<div style="display:flex;align-items:center;padding:2px 4px;border-bottom:1px solid #808080;flex-shrink:0"><button class="win-btn" style="min-width:28px;min-height:20px;font-size:12px" onclick="' + imgBackFn + '" ontouchend="event.preventDefault();' + imgBackFn + '">◀</button></div>' +
     '<div class="viewer-area"><img id="vimg-' + wid + '" src="' + image.url + '" alt="' + image.name + '"></div>' +
     '<div class="viewer-nav">' +
     '<button class="win-btn" onclick="navImage(\''+wid+'\',-1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',-1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="8,2 2,7 8,12" fill="black"/></svg></button>' +
-    '<span class="nav-label" id="navlabel-' + wid + '">' + (imgIdx+1) + ' / ' + sub.images.length + '</span>' +
+    '<span class="nav-label" id="navlabel-' + wid + '">' + (imgIdx+1) + ' / ' + zip.images.length + '</span>' +
     '<button class="win-btn" onclick="navImage(\''+wid+'\',1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="6,2 12,7 6,12" fill="black"/></svg></button></div></div>';
 
   document.getElementById('windows').insertAdjacentHTML('beforeend', h);
@@ -467,19 +563,23 @@ function openImage(imageId, subId, catId) {
 
 function navImage(wid, dir) {
   var state = viewerStates[wid]; if (!state) return;
-  var cat = CATEGORIES.find(function(c) { return c.id === state.catId; });
-  var sub = cat.subfolders.find(function(s) { return s.id === state.subId; });
-  if (!sub) return;
+  var zip = findZip(state.zipId, state.catId, state.groupId);
+  if (!zip) return;
   var newIdx = state.currentIdx + dir;
-  if (newIdx < 0) newIdx = sub.images.length - 1;
-  if (newIdx >= sub.images.length) newIdx = 0;
+  if (newIdx < 0) newIdx = zip.images.length - 1;
+  if (newIdx >= zip.images.length) newIdx = 0;
   state.currentIdx = newIdx;
-  var img = sub.images[newIdx];
+  var img = zip.images[newIdx];
   document.getElementById('vimg-' + wid).src = img.url;
   document.getElementById('title-' + wid).textContent = img.name + ' — Image Viewer';
-  document.getElementById('navlabel-' + wid).textContent = (newIdx+1) + ' / ' + sub.images.length;
+  document.getElementById('navlabel-' + wid).textContent = (newIdx+1) + ' / ' + zip.images.length;
   openWindows[wid].name = img.name;
   updateTaskbar();
+}
+
+function goBack(currentWid, parentFn, args) {
+  closeWindow(currentWid);
+  window[parentFn].apply(null, args);
 }
 
 function closeWindow(wid) {
@@ -576,8 +676,9 @@ function updateTaskbar() {
   c.innerHTML = html;
 }
 
-function toggleStart() { startOpen = !startOpen; document.getElementById('start-menu').classList.toggle('open', startOpen); }
-function closeStart() { startOpen = false; document.getElementById('start-menu').classList.remove('open'); }
+function toggleStart() { startOpen = !startOpen; document.getElementById('start-menu').classList.toggle('open', startOpen); if (!startOpen) { var ds = document.getElementById('docsSubmenu'); if (ds) ds.style.display = 'none'; } }
+function toggleDocs() { var ds = document.getElementById('docsSubmenu'); ds.style.display = ds.style.display === 'none' ? 'block' : 'none'; }
+function closeStart() { startOpen = false; document.getElementById('start-menu').classList.remove('open'); var ds = document.getElementById('docsSubmenu'); if (ds) ds.style.display = 'none'; }
 
 document.body.addEventListener('mousedown', function(e) {
   if (!e.target.closest('.desktop-icon') && !e.target.closest('.start-menu') && !e.target.closest('#startBtn')) closeStart();
