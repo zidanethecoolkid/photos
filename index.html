@@ -910,6 +910,7 @@ function openImageFromZip(imageId, zipId, groupId) {
       '<button class="win-btn" onclick="navImage(\''+wid+'\',1)" ontouchend="event.preventDefault();navImage(\''+wid+'\',1)"><svg width="14" height="14" viewBox="0 0 14 14"><polygon points="6,2 12,7 6,12" fill="black"/></svg></button></div></div>';
     document.getElementById('windows').insertAdjacentHTML('beforeend', h);
     openWindows[wid] = { type: 'image', name: image.name }; bringToFront(wid); updateTaskbar();
+    refitWindow(wid, preload.naturalWidth, preload.naturalHeight);
   };
   preload.onerror = function() {
     // Fallback if image fails to load
@@ -962,6 +963,25 @@ function fitWindow(imgW, imgH) {
   if (x < 4) x = 4;
   return { w: w, h: h, x: x, y: y };
 }
+// Measure the window's real chrome and size it so the photo fills the viewer with no black bars
+function refitWindow(wid, imgW, imgH) {
+  var win = document.getElementById(wid); if (!win) return;
+  var va = win.querySelector('.viewer-area'); if (!va) return;
+  var vchrome = win.offsetHeight - va.offsetHeight; // title/back/nav bars + borders
+  var hchrome = win.offsetWidth - va.offsetWidth;   // side borders + margins
+  var ratio = imgW / imgH;
+  var maxW, maxH;
+  if (isMobile()) { maxW = window.innerWidth - 8; maxH = (window.innerHeight || document.documentElement.clientHeight) - 48 - 10; }
+  else { maxW = Math.min(800, window.innerWidth - 100); maxH = Math.min(700, (window.innerHeight || document.documentElement.clientHeight) - 100); }
+  var vaW = maxW - hchrome, vaH = vaW / ratio;
+  if (vaH > maxH - vchrome) { vaH = maxH - vchrome; vaW = vaH * ratio; }
+  var w = Math.max(300, Math.round(vaW + hchrome));
+  var h = Math.max(200, Math.round(vaH + vchrome));
+  var x = Math.round((window.innerWidth - w) / 2);
+  var y = Math.round(((window.innerHeight || document.documentElement.clientHeight) - 48 - h) / 2);
+  if (x < 4) x = 4; if (y < 4) y = 4;
+  win.style.width = w + 'px'; win.style.height = h + 'px'; win.style.left = x + 'px'; win.style.top = y + 'px';
+}
 // CROSS-ZIP NAVIGATION — when you reach the end of a zip, continues into the next zip in the group
 function navImage(wid, dir) {
   var state = viewerStates[wid]; if (!state) return;
@@ -995,9 +1015,7 @@ function navImage(wid, dir) {
   // Resize window to fit new image
   var preload = new Image();
   preload.onload = function() {
-    var sz = fitWindow(preload.naturalWidth, preload.naturalHeight);
-    var el = document.getElementById(wid);
-    if (el) { el.style.width = sz.w+'px'; el.style.height = sz.h+'px'; el.style.left = sz.x+'px'; el.style.top = sz.y+'px'; }
+    refitWindow(wid, preload.naturalWidth, preload.naturalHeight);
   };
   preload.src = img.url;
   document.getElementById('title-' + wid).textContent = img.name + ' — Image Viewer (' + zip.name + ')';
