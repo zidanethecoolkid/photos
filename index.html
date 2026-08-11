@@ -1201,10 +1201,13 @@ function openGroup(groupId) {
   if (openWindows[wid]) { bringToFront(wid); return; }
   var group = DESKTOP_GROUPS.find(function(g) { return g.id === groupId; });
   if (!group) return;
-  var sz = getWindowSize('folder'); var items = '';
+  var sz = getWindowSize('folder'); var items = ''; var imgCount = 0;
   group.children.forEach(function(zip) {
-    items += '<div class="file-item" ondblclick="openZip(\'' + zip.id + '\',\'' + groupId + '\')" ontouchend="event.preventDefault();openZip(\'' + zip.id + '\',\'' + groupId + '\')">' +
-      '<div class="thumb" style="background:#ffffc0;display:flex;align-items:center;justify-content:center;">' + zipSVG + '</div><div class="file-label">' + zip.name + '</div></div>';
+    zip.images.forEach(function(img) {
+      items += '<div class="file-item" ondblclick="openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + groupId + '\')" ontouchend="event.preventDefault();openImageFromZip(\'' + img.id + '\',\'' + zip.id + '\',\'' + groupId + '\')">' +
+        '<div class="thumb"><img src="' + img.url + '" alt="' + img.name + '" loading="lazy"></div><div class="file-label">' + img.name + '</div></div>';
+      imgCount++;
+    });
   });
   var h = '<div class="window" id="' + wid + '" style="left:'+sz.x+'px;top:'+sz.y+'px;width:'+sz.w+'px;height:'+sz.h+'px;z-index:'+(++zCounter)+'" onmousedown="bringToFront(\''+wid+'\')">' +
     '<div class="title-bar" onmousedown="startDrag(event,\''+wid+'\')" ontouchstart="startDragTouch(event,\''+wid+'\')">' +
@@ -1213,7 +1216,7 @@ function openGroup(groupId) {
     '<div class="menu-bar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>' +
     '<div class="address-bar"><span>Address:</span><div class="addr-input">C:\\Photos\\' + group.name + '</div></div>' +
     '<div class="window-content"><div class="file-grid">' + items + '</div></div>' +
-    '<div class="status-bar">' + group.children.length + ' folder(s)</div></div>';
+    '<div class="status-bar">' + imgCount + ' image(s)</div></div>';
   document.getElementById('windows').insertAdjacentHTML('beforeend', h);
   openWindows[wid] = { type: 'folder', name: group.name }; bringToFront(wid); updateTaskbar();
 }
@@ -1254,7 +1257,7 @@ function openImageFromZip(imageId, zipId, groupId) {
   var image = zip.images[imgIdx];
   if (!image) return;
   viewerStates[wid] = { groupId: groupId, zipId: zipId, currentIdx: imgIdx };
-  var imgBackFn = "goBack('" + wid + "','openZip',['" + zipId + "','" + groupId + "'])";
+  var imgBackFn = "goBack('" + wid + "','openGroup',['" + groupId + "'])";
   // Preload image to get dimensions
   var preload = new Image();
   preload.onload = function() {
